@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import LocaleContext from '../../context/LocaleContext';
-import ThemeContext from '../../context/ThemeContext';
 import PropTypes from 'prop-types';
 import { Navbar, Typography, IconButton, Avatar } from '@material-tailwind/react';
 import { ArrowRightEndOnRectangleIcon, MoonIcon, LanguageIcon, SunIcon } from '@heroicons/react/24/solid';
+import LocaleContext from '../../context/LocaleContext';
+import ThemeContext from '../../context/ThemeContext';
 
 export function NavbarContainer({ authUser, logOut, navigateToProfile }) {
     const { theme, toggleTheme } = useContext(ThemeContext);

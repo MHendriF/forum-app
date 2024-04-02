@@ -1,6 +1,7 @@
-import { useContext, useRef, useEffect } from 'react';
+import { React, useContext, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Typography } from '@material-tailwind/react';
 import { asyncAddNote } from '../../redux/states/note/action';
 import useInput from '../../hooks/useInput';
 import ThemeContext from '../../context/ThemeContext';
@@ -8,9 +9,8 @@ import InputForm from '../Elements/Inputs/InputForm';
 import TextareaForm from '../Elements/Inputs/TextareaForm';
 import ButtonCostum from '../Elements/Buttons';
 import LocaleContext from '../../context/LocaleContext';
-import { Typography } from '@material-tailwind/react';
 
-const FormAddNote = () => {
+function FormAddNote() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [title, setTitle] = useInput('');
@@ -31,7 +31,7 @@ const FormAddNote = () => {
         };
 
         dispatch(asyncAddNote(data));
-        navigate(`/notes`);
+        navigate('/notes');
     };
 
     return (
@@ -47,7 +47,7 @@ const FormAddNote = () => {
                 onInput={setTitle}
                 placeholder={locale === 'id' ? 'Judul' : 'Title'}
                 ref={titleRef}
-                required={true}
+                required
                 color={theme === 'dark' ? 'white' : 'gray'}
             />
             <TextareaForm
@@ -64,6 +64,6 @@ const FormAddNote = () => {
             </ButtonCostum>
         </form>
     );
-};
+}
 
 export default FormAddNote;

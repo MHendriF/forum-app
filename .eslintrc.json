@@ -1,0 +1,18 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "eol-last": "off",
+        "linebreak-style": ["error", "windows"],
+        "jsx-quotes": ["error", "prefer-single"],
+        "indent": ["error", 4]
+    }
+}

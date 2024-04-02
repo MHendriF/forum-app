@@ -1,15 +1,14 @@
-import { useEffect, useContext, useRef } from 'react';
+import { React, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { asyncSetAuthUser } from '../../redux/states/authUser/action';
 import useInput from '../../hooks/useInput';
 import ThemeContext from '../../context/ThemeContext';
 import LocaleContext from '../../context/LocaleContext';
 import ButtonCostum from '../Elements/Buttons';
 import InputForm from '../Elements/Inputs/InputForm';
-import { useSelector } from 'react-redux';
 
-const FormLogin = () => {
+export default function FormLogin() {
     const { authUser = null } = useSelector((states) => states);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -62,6 +61,4 @@ const FormLogin = () => {
             </ButtonCostum>
         </form>
     );
-};
-
-export default FormLogin;
+}
