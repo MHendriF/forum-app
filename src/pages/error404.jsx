@@ -1,10 +1,9 @@
-import { Typography } from '@material-tailwind/react';
-import { Button } from '@material-tailwind/react';
+import { React, useContext } from 'react';
+import { Typography, Button } from '@material-tailwind/react';
 import { useNavigate } from 'react-router-dom';
 import ThemeContext from '../context/ThemeContext';
-import { useContext } from 'react';
 
-const ErrorPage = () => {
+export default function ErrorPage() {
     const navigate = useNavigate();
     const { theme } = useContext(ThemeContext);
 
@@ -17,12 +16,10 @@ const ErrorPage = () => {
                 <Typography variant='h1' color={theme === 'dark' ? 'white' : 'blue-gray'} className='mb-4'>
                     Page Not Found
                 </Typography>
-                <Button size='md' color={theme === 'dark' ? 'white' : 'blue'} type='button' onClick={() => navigate(`/`)}>
+                <Button size='md' color={theme === 'dark' ? 'white' : 'blue'} type='button' onClick={() => navigate('/')}>
                     Go back home
                 </Button>
             </div>
         </div>
     );
-};
-
-export default ErrorPage;
+}

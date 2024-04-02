@@ -11,8 +11,12 @@
     },
     "rules": {
         "eol-last": "off",
-        "linebreak-style": ["error", "windows"],
         "jsx-quotes": ["error", "prefer-single"],
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "object-curly-newline": ["error", { "multiline": true }],
+        "operator-linebreak": ["error", "after"],
+        "max-len": ["error", { "code": 150 }]
     }
 }

@@ -5,25 +5,26 @@ import { showFormattedDate } from '../../utils';
 import ThemeContext from '../../context/ThemeContext';
 import LocaleContext from '../../context/LocaleContext';
 
-const CardNote = (props) => {
+export default function CardNote(props) {
     const { theme } = useContext(ThemeContext);
     const { children } = props;
 
     return (
         <div
-            className={`w-full max-w-xs border border-white-700 rounded-lg shadow mx-2 my-2 flex flex-col justify-between text-white ${theme === 'dark' ? 'bg-gray-800 ' : 'bg-blue-600'}`}>
+            className={`w-full max-w-xs border border-white-700 rounded-lg shadow mx-2 my-2 flex flex-col justify-between text-white 
+                ${theme === 'dark' ? 'bg-gray-800 ' : 'bg-blue-600'}`}>
             {children}
         </div>
     );
-};
+}
 
-const Header = (props) => {
+function Header(props) {
     const { id, title, createdAt } = props;
     const { locale } = useContext(LocaleContext);
 
     const getFormatDate = () => {
         if (locale === 'id') return 'id-ID';
-        else return 'en-US';
+        return 'en-US';
     };
 
     return (
@@ -34,23 +35,21 @@ const Header = (props) => {
             <p className='text-xs '>{showFormattedDate(createdAt, getFormatDate())}</p>
         </div>
     );
-};
+}
 
-const Body = (props) => {
+function Body(props) {
     const { children } = props;
     return (
         <div className='px-5 pb-5 h-full'>
             <p className='text-m '>{children.length > 200 ? `${children.substring(0, 200)}...` : children}</p>
         </div>
     );
-};
+}
 
 CardNote.Header = Header;
 CardNote.Body = Body;
 
-CardNote.propTypes = {
-    children: PropTypes.node.isRequired,
-};
+CardNote.propTypes = { children: PropTypes.node.isRequired };
 
 Header.propTypes = {
     id: PropTypes.string.isRequired,
@@ -58,8 +57,4 @@ Header.propTypes = {
     createdAt: PropTypes.string.isRequired,
 };
 
-Body.propTypes = {
-    children: PropTypes.node.isRequired,
-};
-
-export default CardNote;
+Body.propTypes = { children: PropTypes.node.isRequired };

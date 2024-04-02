@@ -47,7 +47,8 @@ export default function FormLogin() {
                 type='email'
                 placeholder='example@email.com'
                 ref={emailRef}
-                color={theme === 'dark' ? 'white' : 'gray'}></InputForm>
+                color={theme === 'dark' ? 'white' : 'gray'}
+            />
             <InputForm
                 label='Password'
                 name='password'
@@ -55,8 +56,9 @@ export default function FormLogin() {
                 onInput={setPassword}
                 type='password'
                 placeholder='********'
-                color={theme === 'dark' ? 'white' : 'gray'}></InputForm>
-            <ButtonCostum classname='w-full' color={'blue'} type='submit'>
+                color={theme === 'dark' ? 'white' : 'gray'}
+            />
+            <ButtonCostum classname='w-full' color='blue' type='submit'>
                 {locale === 'id' ? 'Masuk' : 'Login'}
             </ButtonCostum>
         </form>

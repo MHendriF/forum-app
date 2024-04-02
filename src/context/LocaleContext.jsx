@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { React, createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const LocaleContext = createContext();
@@ -22,8 +22,6 @@ export const LocaleProvider = ({ children }) => {
     return <LocaleContext.Provider value={contextValue}>{children}</LocaleContext.Provider>;
 };
 
-LocaleProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-};
+LocaleProvider.propTypes = { children: PropTypes.node.isRequired };
 
 export default LocaleContext;

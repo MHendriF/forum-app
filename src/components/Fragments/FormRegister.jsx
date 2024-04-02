@@ -8,7 +8,7 @@ import LocaleContext from '../../context/LocaleContext';
 import ButtonCostum from '../Elements/Buttons';
 import InputForm from '../Elements/Inputs/InputForm';
 
-const FormRegister = () => {
+export default function FormRegister() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [email, setEmail] = useInput('');
@@ -25,7 +25,7 @@ const FormRegister = () => {
             password: e.target.password.value,
         };
         dispatch(asyncRegisterUser(data));
-        navigate(`/`);
+        navigate('/');
     };
 
     return (
@@ -37,7 +37,8 @@ const FormRegister = () => {
                 onInput={setName}
                 type='text'
                 placeholder='Insert your name here ....'
-                color={theme === 'dark' ? 'white' : 'gray'}></InputForm>
+                color={theme === 'dark' ? 'white' : 'gray'}
+            />
             <InputForm
                 label='Email'
                 name='email'
@@ -45,7 +46,8 @@ const FormRegister = () => {
                 onInput={setEmail}
                 type='email'
                 placeholder='example@email.com'
-                color={theme === 'dark' ? 'white' : 'gray'}></InputForm>
+                color={theme === 'dark' ? 'white' : 'gray'}
+            />
             <InputForm
                 label='Password'
                 name='password'
@@ -53,12 +55,11 @@ const FormRegister = () => {
                 onInput={setPassword}
                 type='password'
                 placeholder='********'
-                color={theme === 'dark' ? 'white' : 'gray'}></InputForm>
-            <ButtonCostum classname='w-full' color={'blue'} type='submit'>
+                color={theme === 'dark' ? 'white' : 'gray'}
+            />
+            <ButtonCostum classname='w-full' color='blue' type='submit'>
                 {locale === 'id' ? 'Daftar' : 'Register'}
             </ButtonCostum>
         </form>
     );
-};
-
-export default FormRegister;
+}

@@ -1,14 +1,15 @@
+import { React } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-tailwind/react';
 
-const ButtonCostum = (props) => {
-    const { children, classname, onClick = () => {}, type = 'button', color } = props;
+export default function ButtonCostum(props) {
+    const { children, classname, onClick = () => {}, type = 'button', color = 'blue' } = props;
     return (
         <Button className={`${classname}`} type={type} onClick={onClick} color={color}>
             {children}
         </Button>
     );
-};
+}
 
 ButtonCostum.propTypes = {
     children: PropTypes.node.isRequired,
@@ -17,5 +18,3 @@ ButtonCostum.propTypes = {
     type: PropTypes.string,
     color: PropTypes.string,
 };
-
-export default ButtonCostum;

@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { React, useContext } from 'react';
 import FormRegister from '../components/Fragments/FormRegister';
 import AuthLayouts from '../components/Layouts/AuthLayouts';
 import LocaleContext from '../context/LocaleContext';
 
-const RegisterPage = () => {
+export default function RegisterPage() {
     const { locale } = useContext(LocaleContext);
 
     return (
@@ -11,6 +11,4 @@ const RegisterPage = () => {
             <FormRegister />
         </AuthLayouts>
     );
-};
-
-export default RegisterPage;
+}

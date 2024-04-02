@@ -10,7 +10,7 @@ import TextareaForm from '../Elements/Inputs/TextareaForm';
 import ButtonCostum from '../Elements/Buttons';
 import LocaleContext from '../../context/LocaleContext';
 
-function FormAddNote() {
+export default function FormAddNote() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [title, setTitle] = useInput('');
@@ -65,5 +65,3 @@ function FormAddNote() {
         </form>
     );
 }
-
-export default FormAddNote;

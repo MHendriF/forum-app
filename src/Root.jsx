@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { React, useEffect } from 'react';
 import { Outlet, ScrollRestoration, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { asyncUnsetAuthUser } from './redux/states/authUser/action';
@@ -6,7 +6,7 @@ import { asyncPreloadProcess } from './redux/states/isPreload/action';
 import Loading from './components/Elements/Loadings/Loading';
 import { NavbarContainer } from './components/Layouts/NavbarContainer';
 
-const Root = () => {
+export default function Root() {
     const { authUser = null, isPreload = false } = useSelector((states) => states);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -21,11 +21,11 @@ const Root = () => {
 
     const onLogOut = () => {
         dispatch(asyncUnsetAuthUser());
-        navigate(`/`);
+        navigate('/');
     };
 
     const onNavigateToProfile = () => {
-        navigate(`/profile`);
+        navigate('/profile');
     };
 
     return (
@@ -44,6 +44,4 @@ const Root = () => {
             </div>
         </>
     );
-};
-
-export default Root;
+}

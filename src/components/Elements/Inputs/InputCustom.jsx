@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { React, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from '@material-tailwind/react';
 
@@ -28,7 +28,7 @@ InputCustom.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onInput: PropTypes.func.isRequired,
-    required: PropTypes.bool,
+    required: PropTypes.bool.isRequired,
     color: PropTypes.string.isRequired,
 };
 

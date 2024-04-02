@@ -22,8 +22,6 @@ export const ThemeProvider = ({ children }) => {
     return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 };
 
-ThemeProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-};
+ThemeProvider.propTypes = { children: PropTypes.node.isRequired };
 
 export default ThemeContext;
