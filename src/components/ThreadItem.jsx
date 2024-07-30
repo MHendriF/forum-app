@@ -51,7 +51,7 @@ export const ThreadItem = ({
                   </svg>
                   <p className="text-sm text-gray-500">{totalComments} comments</p>
                   <p className="text-sm text-gray-500 ml-4">
-                    postedBy : <strong>{creatorName}</strong>
+                    createdBy : <strong>{creatorName}</strong>
                   </p>
                 </div>
                 <p className="text-sm text-gray-500">Category: {category}</p>
