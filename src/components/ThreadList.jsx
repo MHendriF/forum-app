@@ -1,7 +1,8 @@
-// src/components/ThreadList.jsx
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import { fetchThreads } from "../redux/threadsSlice";
+import { ThreadItem } from "./ThreadItem";
 
 const ThreadList = () => {
   const dispatch = useDispatch();
@@ -14,20 +15,12 @@ const ThreadList = () => {
     }
   }, [status, dispatch]);
 
-  if (status === "loading") return <div>Loading...</div>;
-  if (status === "failed") return <div>Error loading threads</div>;
+  if (status === "loading") return <div className="text-center">Loading...</div>;
+  if (status === "failed") return <div className="text-center">Error loading threads</div>;
 
   return (
-    <div>
-      {threads.map((thread) => (
-        <div key={thread.id}>
-          <h2>{thread.title}</h2>
-          <p>{thread.body}</p>
-          <p>Created by: {thread.creatorName}</p>
-          <p>Comments: {thread.commentsCount}</p>
-          <p>Created at: {new Date(thread.createdAt).toLocaleString()}</p>
-        </div>
-      ))}
+    <div className="container mx-auto p-4">
+      {threads.length > 0 && threads.map((thread, index) => <ThreadItem key={index} {...thread} />)}
     </div>
   );
 };
