@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import parse from "html-react-parser";
 import { postedAt } from "../utils";
 import Avatar from "./Avatar";
+import { FaRegCommentDots } from "react-icons/fa";
+import { FaDownLong, FaUpLong } from "react-icons/fa6";
 
 export const ThreadItem = ({
   id,
@@ -12,11 +14,26 @@ export const ThreadItem = ({
   category,
   user,
   upVotesBy,
+  downVotesBy,
   upVote,
   downVote,
   totalComments,
   authUser,
 }) => {
+  const onUpVoteClick = () => {
+    upVote(id);
+  };
+
+  const onDownVoteClick = () => {
+    downVote(id);
+  };
+
+  const isUpVoted = upVotesBy?.includes(authUser?.id);
+  const isDownVoted = downVotesBy?.includes(authUser?.id);
+
+  console.log("🚀 ~ isUpVoted:", upVotesBy);
+  console.log("🚀 ~ isDownVoted:", downVotesBy);
+
   return (
     <>
       <div className="block hover:bg-gray-300 transition duration-300 ease-in-out rounded-lg">
@@ -34,21 +51,23 @@ export const ThreadItem = ({
               <p className="text-gray-700 mt-2 line-clamp-3">{parse(`${body}`)}</p>
               <div className="mt-4 flex items-center justify-between">
                 <div className="flex items-center">
-                  <svg
-                    className="w-5 h-5 text-gray-500 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                    ></path>
-                  </svg>
-                  <p className="text-sm text-gray-500">{totalComments} comments</p>
+                  <div className="flex items-center justify-center mr-4">
+                    <FaUpLong
+                      onClick={onUpVoteClick}
+                      className={`w-8 h-8 text-gray-500 p-2 hover:bg-slate-700 hover:text-white cursor-pointer rounded-sm ${
+                        isUpVoted && "text-green-500"
+                      }`}
+                    />
+                    <p className="text-md p-1 text-gray-500">{upVotesBy?.length}</p>
+                    <FaDownLong
+                      onClick={onDownVoteClick}
+                      className={`w-8 h-8 text-gray-500 p-2 hover:bg-slate-700 hover:text-white cursor-pointer  rounded-sm ${
+                        isDownVoted && "text-red-500"
+                      }`}
+                    />
+                  </div>
+                  <FaRegCommentDots className="w-5 h-5 text-gray-500 mr-2" />
+                  <p className="text-sm text-gray-500">{totalComments}</p>
                   <p className="text-sm text-gray-500 ml-4">
                     createdBy : <strong>{user?.name}</strong>
                   </p>
@@ -71,6 +90,7 @@ ThreadItem.propTypes = {
   createdAt: PropTypes.string,
   user: PropTypes.object,
   upVotesBy: PropTypes.array,
+  downVotesBy: PropTypes.array,
   upVote: PropTypes.func,
   downVote: PropTypes.func,
   totalComments: PropTypes.number,
