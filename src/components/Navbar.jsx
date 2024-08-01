@@ -1,11 +1,13 @@
 // src/components/Navbar.jsx
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { FaHome, FaTrophy, FaSignInAlt, FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
+import { FaHome, FaTrophy, FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import NavbarLink from "./NavbarLink";
+import { FaArrowRightToBracket } from "react-icons/fa6";
 
 const Navbar = ({ authUser, signOut }) => {
+  console.log("🚀 ~ Navbar ~ authUser:", authUser);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -20,30 +22,22 @@ const Navbar = ({ authUser, signOut }) => {
           </Link>
         </div>
         <div className="hidden md:flex space-x-8">
-          <Link
-            to="/"
-            className="text-white text-lg font-bold flex items-center hover:text-blue-300 transition duration-300 ease-in-out"
-          >
+          <NavbarLink link="/" className="flex items-center">
             <FaHome className="mr-2" /> Home
-          </Link>
-          <Link
-            to="/leaderboard"
-            className="text-white text-lg font-bold flex items-center hover:text-blue-300 transition duration-300 ease-in-out"
-          >
+          </NavbarLink>
+          <NavbarLink link="/leaderboard" className="flex items-center">
             <FaTrophy className="mr-2" /> Leaderboard
-          </Link>
-          <Link
-            to="/login"
-            className="text-white text-lg font-bold flex items-center hover:text-blue-300 transition duration-300 ease-in-out"
-          >
-            <FaSignInAlt className="mr-2" /> Login
-          </Link>
-          <Link
-            to="/register"
-            className="text-white text-lg font-bold flex items-center hover:text-blue-300 transition duration-300 ease-in-out"
-          >
-            <FaUserPlus className="mr-2" /> Register
-          </Link>
+          </NavbarLink>
+          {authUser && (
+            <>
+              <NavbarLink link="/profile" className="flex items-center">
+                <FaUser className="mr-2" /> My Profile
+              </NavbarLink>
+              <NavbarLink link="/logout" className="flex items-center" onClick={signOut}>
+                <FaArrowRightToBracket className="mr-2" /> Logout
+              </NavbarLink>
+            </>
+          )}
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-white focus:outline-none">
@@ -53,18 +47,12 @@ const Navbar = ({ authUser, signOut }) => {
       </div>
       {isOpen && (
         <div className="md:hidden mt-4">
-          <Link
-            to="/"
-            className="block text-white text-lg font-bold py-2 hover:text-blue-300 transition duration-300 ease-in-out"
-          >
+          <NavbarLink link="/" className="block py-2">
             <FaHome className="mr-2 inline-block" /> Home
-          </Link>
-          <Link
-            to="/leaderboard"
-            className="block text-white text-lg font-bold py-2 hover:text-blue-300 transition duration-300 ease-in-out"
-          >
+          </NavbarLink>
+          <NavbarLink link="/leaderboard" className="block py-2">
             <FaTrophy className="mr-2 inline-block" /> Leaderboard
-          </Link>
+          </NavbarLink>
         </div>
       )}
     </nav>

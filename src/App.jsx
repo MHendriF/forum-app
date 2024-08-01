@@ -10,6 +10,7 @@ import RegisterPage from "./pages/RegisterPage";
 import ThreadDetailPage from "./pages/ThreadDetailPage";
 import Navbar from "./components/Navbar";
 import Loading from "./components/Loading";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   const { authUser = null, isPreload = false } = useSelector((states) => states);
@@ -46,14 +47,15 @@ const App = () => {
   return (
     <>
       <Loading />
-      <header style={{ maxWidth: "1200px", margin: "auto" }}>
+      <header>
         <Navbar authUser={authUser} signOut={onSignOut} />
       </header>
-      <main style={{ maxWidth: "1200px", margin: "auto" }}>
+      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/thread/:id" element={<ThreadDetailPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/threads/:id" element={<ThreadDetailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </main>
     </>

@@ -49,7 +49,7 @@ const HomePage = () => {
   console.log("🚀 ~ HomePage ~ filteredThreads:", filteredThreads);
 
   return (
-    <div>
+    <div className="container mx-auto pt-10 w-full  max-w-3xl bg-white">
       <ThreadList
         authUser={authUser}
         threads={params ? filteredThreads : threadList}

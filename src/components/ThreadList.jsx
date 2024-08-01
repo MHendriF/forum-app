@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 const ThreadList = ({ threads, addThread, upVote, downVote, categories, onClickCategory, params, authUser }) => {
   console.log("🚀 ~ ThreadList ~ threads:", threads);
   return (
-    <div className="container mx-auto p-4">
+    <>
       {threads.length > 0 &&
         threads.map((thread, index) => (
           <ThreadItem key={index} {...thread} upVote={upVote} downVote={downVote} authUser={authUser} />
         ))}
-    </div>
+    </>
   );
 };
 

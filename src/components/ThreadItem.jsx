@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import parse from "html-react-parser";
 import { postedAt } from "../utils";
+import Avatar from "./Avatar";
 
 export const ThreadItem = ({
   id,
@@ -17,10 +19,10 @@ export const ThreadItem = ({
 }) => {
   return (
     <>
-      <div className="block hover:bg-gray-100 transition duration-300 ease-in-out">
-        <div className="border-b pb-4 mb-4">
+      <div className="block hover:bg-gray-300 transition duration-300 ease-in-out rounded-lg">
+        <div className="border p-4 mb-4 rounded-lg">
           <div className="flex items-start">
-            <img src={user?.avatar} alt={user?.name} className="w-12 h-12 rounded-full mr-4" />
+            <Avatar src={user?.avatar} alt={user?.name} />
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <Link to={`/thread/${id}`}>
@@ -29,12 +31,7 @@ export const ThreadItem = ({
 
                 <p className="text-sm text-gray-500">{postedAt(createdAt)}</p>
               </div>
-              <p
-                className="text-gray-700 mt-2 line-clamp-3"
-                dangerouslySetInnerHTML={{
-                  __html: body,
-                }}
-              ></p>
+              <p className="text-gray-700 mt-2 line-clamp-3">{parse(`${body}`)}</p>
               <div className="mt-4 flex items-center justify-between">
                 <div className="flex items-center">
                   <svg
