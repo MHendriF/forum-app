@@ -8,6 +8,7 @@ import {
   asyncUpVoteThreadDetail,
 } from "../states/threadDetail/action";
 import { asyncAddComment, asyncUpVoteComment, asyncDownVoteComment } from "../states/comments/action";
+import ThreadComment from "../components/ThreadComment";
 
 const ThreadDetailPage = () => {
   const { id } = useParams();
@@ -43,8 +44,15 @@ const ThreadDetailPage = () => {
   }
   console.log("🚀 ~ ThreadDetailPage ~ threadDetail:", threadDetail);
   return (
-    <div className="container mx-auto pt-10 w-full  max-w-3xl bg-white">
+    <div className="container mx-auto pt-10 w-full max-w-3xl bg-white flex flex-col gap-4">
       <ThreadDetail {...threadDetail} authUser={authUser} upVote={onUpVote} downVote={onDownVote} />
+      <ThreadComment
+        {...threadDetail}
+        authUser={authUser}
+        addComment={onAddComment}
+        upVoteComment={onUpVoteComment}
+        downVoteComment={onDownVoteComment}
+      />
     </div>
   );
 };

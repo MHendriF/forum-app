@@ -5,10 +5,9 @@ const ThreadList = ({ threads, addThread, upVote, downVote, categories, onClickC
   console.log("🚀 ~ ThreadList ~ threads:", threads);
   return (
     <>
-      {threads.length > 0 &&
-        threads.map((thread, index) => (
-          <ThreadItem key={index} {...thread} upVote={upVote} downVote={downVote} authUser={authUser} />
-        ))}
+      {threads?.map((thread, index) => (
+        <ThreadItem key={index} {...thread} upVote={upVote} downVote={downVote} authUser={authUser} />
+      ))}
     </>
   );
 };

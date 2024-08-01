@@ -1,21 +1,17 @@
-import PropTypes from "prop-types";
-import { postedAt } from "../utils";
 import Avatar from "./Avatar";
-import { FaRegCommentDots, FaDownLong, FaUpLong } from "react-icons/fa6";
+import { postedAt } from "../utils";
+import { FaDownLong, FaUpLong } from "react-icons/fa6";
+import PropTypes from "prop-types";
 
-export default function ThreadDetail({
+export default function CommentItem({
   id,
-  title,
-  body,
-  createdAt,
-  category,
   owner,
-  comments,
-  upVotesBy,
-  downVotesBy,
+  createdAt,
+  content,
   upVote,
   downVote,
-  totalComments,
+  upVotesBy,
+  downVotesBy,
   authUser,
 }) {
   const onUpVoteClick = () => {
@@ -28,28 +24,28 @@ export default function ThreadDetail({
 
   const isUpVoted = upVotesBy?.includes(authUser?.id);
   const isDownVoted = downVotesBy?.includes(authUser?.id);
-  console.log("🚀 ~ ThreadDetail ~ totalComments:", totalComments);
+
+  console.log("🚀 ~ isUpVoted:", upVotesBy);
+  console.log("🚀 ~ content:", content);
 
   return (
-    <div className="border p-4 mb-4 rounded-lg">
+    <div className="border-b p-4 mb-4 rounded-lg">
       <div className="flex justify-between">
         <Avatar src={owner?.avatar} alt={owner?.name} />
         <div className="flex-1">
           <p className="text-md text-gray-800 font-bold">{owner?.name}</p>
           <p className="text-sm text-slate-500">{postedAt(createdAt)}</p>
         </div>
-        <p className="text-sm text-gray-500">#{category}</p>
       </div>
       <div className="flex items-start">
         <div className="flex-1">
-          <h2 className="text-lg font-bold mt-2">{title}</h2>
           <p
             className="text-gray-700 mt-2"
             dangerouslySetInnerHTML={{
-              __html: body,
+              __html: content,
             }}
           />
-          <div className="mt-4 flex items-center justify-between">
+          <div className="mt-4 flex items-center">
             <div className="flex items-center">
               <div className="flex items-center justify-center mr-4">
                 <FaUpLong
@@ -66,8 +62,6 @@ export default function ThreadDetail({
                   }`}
                 />
               </div>
-              <FaRegCommentDots className="w-5 h-5 text-gray-500 mr-2" />
-              <p className="text-sm text-gray-500">{comments?.length}</p>
             </div>
           </div>
         </div>
@@ -76,18 +70,14 @@ export default function ThreadDetail({
   );
 }
 
-ThreadDetail.propTypes = {
+CommentItem.propTypes = {
   id: PropTypes.string,
-  title: PropTypes.string,
-  body: PropTypes.string,
-  createdAt: PropTypes.string,
-  category: PropTypes.string,
   owner: PropTypes.object,
-  comments: PropTypes.array,
-  upVotesBy: PropTypes.array,
-  downVotesBy: PropTypes.array,
+  createdAt: PropTypes.string,
+  content: PropTypes.string,
   upVote: PropTypes.func,
   downVote: PropTypes.func,
-  totalComments: PropTypes.number,
+  upVotesBy: PropTypes.array,
+  downVotesBy: PropTypes.array,
   authUser: PropTypes.object,
 };
