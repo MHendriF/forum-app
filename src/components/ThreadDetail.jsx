@@ -4,6 +4,7 @@ import { postedAt } from "../utils";
 import Avatar from "./Avatar";
 import { FaRegCommentDots, FaTrophy } from "react-icons/fa";
 import { FaDownLong, FaUpLong } from "react-icons/fa6";
+import CommentForm from "./CommentForm";
 
 const ThreadDetail = ({
   id,
@@ -34,13 +35,17 @@ const ThreadDetail = ({
 
   return (
     <div className="border p-4 mb-4 rounded-lg">
-      <div className="flex items-start">
+      <div className="flex justify-between">
         <Avatar src={owner?.avatar} alt={owner?.name} />
         <div className="flex-1">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold">{title}</h2>
-            <p className="text-sm text-gray-500">{postedAt(createdAt)}</p>
-          </div>
+          <p className="text-md text-gray-800 font-bold">{owner?.name}</p>
+          <p className="text-sm text-slate-500">{postedAt(createdAt)}</p>
+        </div>
+        <p className="text-sm text-gray-500">#{category}</p>
+      </div>
+      <div className="flex items-start">
+        <div className="flex-1">
+          <h2 className="text-lg font-bold">{title}</h2>
           <p className="text-gray-700 mt-2">{parse(`${body}`)}</p>
           <div className="mt-4 flex items-center justify-between">
             <div className="flex items-center">
@@ -61,14 +66,11 @@ const ThreadDetail = ({
               </div>
               <FaRegCommentDots className="w-5 h-5 text-gray-500 mr-2" />
               <p className="text-sm text-gray-500">{comments?.length}</p>
-              <p className="text-sm text-gray-500 ml-4">
-                createdBy : <strong>{owner?.name}</strong>
-              </p>
             </div>
-            <p className="text-sm text-gray-500">Category: {category}</p>
           </div>
         </div>
       </div>
+      <CommentForm />
     </div>
   );
 };

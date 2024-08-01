@@ -7,7 +7,7 @@ export default function NavbarLink({ link, className, children }) {
     <Link
       to={link}
       className={clsx(
-        "text-white text-lg font-bold hover:text-blue-300 transition duration-300 ease-in-out",
+        "text-white text-lg font-bold hover:text-slate-400 transition duration-300 ease-in-out",
         className
       )}
     >

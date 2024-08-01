@@ -14,10 +14,10 @@ const Navbar = ({ authUser, signOut }) => {
     setIsOpen(!isOpen);
   };
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="bg-slate-700 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-2xl font-bold">
-          <Link to="/" className="hover:text-blue-300 transition duration-300 ease-in-out">
+          <Link to="/" className="hover:text-slate-400 transition duration-300 ease-in-out">
             Forum App
           </Link>
         </div>

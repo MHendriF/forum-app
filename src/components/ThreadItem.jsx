@@ -36,20 +36,23 @@ export const ThreadItem = ({
 
   return (
     <>
-      <div className="block hover:bg-gray-300 transition duration-300 ease-in-out rounded-lg">
+      <div className="block hover:bg-slate-300 transition duration-300 ease-in-out rounded-lg">
         <div className="border p-4 mb-4 rounded-lg">
-          <div className="flex items-start">
+          <div className="flex justify-between">
             <Avatar src={user?.avatar} alt={user?.name} />
             <div className="flex-1">
-              <div className="flex items-center justify-between">
-                <Link to={`/thread/${id}`}>
-                  <h2 className="text-lg font-bold">{title}</h2>
-                </Link>
-
-                <p className="text-sm text-gray-500">{postedAt(createdAt)}</p>
-              </div>
+              <p className="text-md text-gray-800 font-bold">{user?.name}</p>
+              <p className="text-sm text-slate-500">{postedAt(createdAt)}</p>
+            </div>
+            <p className="text-sm text-gray-500">#{category}</p>
+          </div>
+          <div className="flex items-start">
+            <div className="flex-1">
+              <Link to={`/thread/${id}`} className="flex">
+                <h2 className="text-lg font-bold">{title}</h2>
+              </Link>
               <p className="text-gray-700 mt-2 line-clamp-3">{parse(`${body}`)}</p>
-              <div className="mt-4 flex items-center justify-between">
+              <div className="mt-4 flex items-center">
                 <div className="flex items-center">
                   <div className="flex items-center justify-center mr-4">
                     <FaUpLong
@@ -68,11 +71,7 @@ export const ThreadItem = ({
                   </div>
                   <FaRegCommentDots className="w-5 h-5 text-gray-500 mr-2" />
                   <p className="text-sm text-gray-500">{totalComments}</p>
-                  <p className="text-sm text-gray-500 ml-4">
-                    createdBy : <strong>{user?.name}</strong>
-                  </p>
                 </div>
-                <p className="text-sm text-gray-500">Category: {category}</p>
               </div>
             </div>
           </div>
