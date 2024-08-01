@@ -1,19 +1,19 @@
 // src/components/Leaderboard.jsx
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLeaderboard } from "../redux/threadsSlice";
+import { asyncReceiveLeaderboards } from "../states/leaderboards/action";
 
 const Leaderboard = () => {
+  const { leaderboard = [] } = useSelector((states) => states);
   const dispatch = useDispatch();
-  const leaderboard = useSelector((state) => state.threads.leaderboard);
-  const status = useSelector((state) => state.threads.status);
 
   useEffect(() => {
-    dispatch(fetchLeaderboard());
+    dispatch(asyncReceiveLeaderboards());
   }, [dispatch]);
 
-  if (status === "loading") return <div className="text-center">Loading...</div>;
-  if (status === "failed") return <div className="text-center">Error loading leaderboard</div>;
+  if (!leaderboard) {
+    return null;
+  }
 
   return (
     <div className="container mx-auto p-4">

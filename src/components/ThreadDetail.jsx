@@ -1,32 +1,50 @@
 // src/components/ThreadDetail.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchThreadDetail, addComment } from "../redux/threadsSlice";
+import {
+  asyncDownVoteThreadDetail,
+  asyncReceiveThreadDetail,
+  asyncUpVoteThreadDetail,
+} from "../states/threadDetail/action";
+import { asyncAddComment, asyncUpVoteComment, asyncDownVoteComment } from "../states/comments/action";
 
 const ThreadDetail = () => {
   const { id } = useParams();
+  const { threadDetail = null, authUser } = useSelector((states) => states);
   const dispatch = useDispatch();
-  const thread = useSelector((state) => state.threads.threadDetail);
-  const status = useSelector((state) => state.threads.status);
-  const [comment, setComment] = useState("");
 
   useEffect(() => {
-    dispatch(fetchThreadDetail(id));
+    dispatch(asyncReceiveThreadDetail(id));
   }, [id, dispatch]);
 
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-    dispatch(addComment({ threadId: id, comment }));
-    setComment("");
+  const onUpVote = (threadId) => {
+    dispatch(asyncUpVoteThreadDetail(threadId));
   };
 
-  if (status === "loading") return <div className="text-center">Loading...</div>;
-  if (status === "failed") return <div className="text-center">Error loading thread detail</div>;
+  const onDownVote = (threadId) => {
+    dispatch(asyncDownVoteThreadDetail(threadId));
+  };
+
+  const onAddComment = (content) => {
+    dispatch(asyncAddComment({ threadId: id, content }));
+  };
+
+  const onUpVoteComment = (commentId) => {
+    dispatch(asyncUpVoteComment({ threadId: id, commentId }));
+  };
+
+  const onDownVoteComment = (commentId) => {
+    dispatch(asyncDownVoteComment({ threadId: id, commentId }));
+  };
+
+  if (!threadDetail) {
+    return null;
+  }
 
   return (
     <div className="container mx-auto p-4">
-      {thread && (
+      {/* {thread && (
         <>
           <h2 className="text-xl font-bold">{thread.title}</h2>
           <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: thread.body }}></p>
@@ -69,7 +87,7 @@ const ThreadDetail = () => {
             </button>
           </form>
         </>
-      )}
+      )} */}
     </div>
   );
 };

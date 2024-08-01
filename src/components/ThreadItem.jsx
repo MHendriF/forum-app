@@ -7,18 +7,20 @@ export const ThreadItem = ({
   title,
   body,
   createdAt,
-  ownerId,
-  totalComments,
   category,
-  creatorAvatar,
-  creatorName = "Anonymous",
+  user,
+  upVotesBy,
+  upVote,
+  downVote,
+  totalComments,
+  authUser,
 }) => {
   return (
     <>
       <div className="block hover:bg-gray-100 transition duration-300 ease-in-out">
         <div className="border-b pb-4 mb-4">
           <div className="flex items-start">
-            <img src={creatorAvatar} alt={ownerId} className="w-12 h-12 rounded-full mr-4" />
+            <img src={user?.avatar} alt={user?.name} className="w-12 h-12 rounded-full mr-4" />
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <Link to={`/thread/${id}`}>
@@ -51,7 +53,7 @@ export const ThreadItem = ({
                   </svg>
                   <p className="text-sm text-gray-500">{totalComments} comments</p>
                   <p className="text-sm text-gray-500 ml-4">
-                    createdBy : <strong>{creatorName}</strong>
+                    createdBy : <strong>{user?.name}</strong>
                   </p>
                 </div>
                 <p className="text-sm text-gray-500">Category: {category}</p>
@@ -64,26 +66,16 @@ export const ThreadItem = ({
   );
 };
 
-const userShape = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-};
-
-const threadItemShape = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  totalComments: PropTypes.number.isRequired,
-  authUser: PropTypes.string.isRequired,
-  user: PropTypes.shape(userShape).isRequired,
-};
-
 ThreadItem.propTypes = {
-  ...threadItemShape,
+  id: PropTypes.string,
+  title: PropTypes.string,
+  body: PropTypes.string,
+  category: PropTypes.string,
+  createdAt: PropTypes.string,
+  user: PropTypes.object,
+  upVotesBy: PropTypes.array,
+  upVote: PropTypes.func,
+  downVote: PropTypes.func,
+  totalComments: PropTypes.number,
+  authUser: PropTypes.object,
 };
-
-export { threadItemShape };

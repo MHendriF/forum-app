@@ -1,9 +1,11 @@
 // src/components/Navbar.jsx
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaHome, FaTrophy, FaSignInAlt, FaUserPlus, FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-const Navbar = () => {
+const Navbar = ({ authUser, signOut }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -63,18 +65,6 @@ const Navbar = () => {
           >
             <FaTrophy className="mr-2 inline-block" /> Leaderboard
           </Link>
-          <Link
-            to="/login"
-            className="block text-white text-lg font-bold py-2 hover:text-blue-300 transition duration-300 ease-in-out"
-          >
-            <FaSignInAlt className="mr-2 inline-block" /> Login
-          </Link>
-          <Link
-            to="/register"
-            className="block text-white text-lg font-bold py-2 hover:text-blue-300 transition duration-300 ease-in-out"
-          >
-            <FaUserPlus className="mr-2 inline-block" /> Register
-          </Link>
         </div>
       )}
     </nav>
@@ -82,3 +72,12 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const authUserShape = {
+  name: PropTypes.string.isRequired,
+};
+
+Navbar.propTypes = {
+  authUser: PropTypes.shape(authUserShape).isRequired,
+  signOut: PropTypes.func.isRequired,
+};

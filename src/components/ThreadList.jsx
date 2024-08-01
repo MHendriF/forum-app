@@ -1,28 +1,27 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PropTypes from "prop-types";
-import { fetchThreads } from "../redux/threadsSlice";
 import { ThreadItem } from "./ThreadItem";
+import PropTypes from "prop-types";
 
-const ThreadList = () => {
-  const dispatch = useDispatch();
-  const threads = useSelector((state) => state.threads.threads);
-  const status = useSelector((state) => state.threads.status);
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchThreads());
-    }
-  }, [status, dispatch]);
-
-  if (status === "loading") return <div className="text-center">Loading...</div>;
-  if (status === "failed") return <div className="text-center">Error loading threads</div>;
-
+const ThreadList = ({ threads, addThread, upVote, downVote, categories, onClickCategory, params, authUser }) => {
+  console.log("🚀 ~ ThreadList ~ threads:", threads);
   return (
     <div className="container mx-auto p-4">
-      {threads.length > 0 && threads.map((thread, index) => <ThreadItem key={index} {...thread} />)}
+      {threads.length > 0 &&
+        threads.map((thread, index) => (
+          <ThreadItem key={index} {...thread} upVote={upVote} downVote={downVote} authUser={authUser} />
+        ))}
     </div>
   );
+};
+
+ThreadList.propTypes = {
+  threads: PropTypes.array,
+  addThread: PropTypes.func,
+  upVote: PropTypes.func,
+  downVote: PropTypes.func,
+  categories: PropTypes.array,
+  onClickCategory: PropTypes.func,
+  params: PropTypes.string,
+  authUser: PropTypes.object,
 };
 
 export default ThreadList;
