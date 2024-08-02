@@ -24,5 +24,6 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'no-alert': 'off',
   },
 };
