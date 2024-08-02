@@ -1,12 +1,24 @@
-import { ThreadItem } from "./ThreadItem";
-import PropTypes from "prop-types";
+import { ThreadItem } from './ThreadItem';
+import PropTypes from 'prop-types';
 
-export default function ThreadList({ threads, upVote, downVote, categories, authUser }) {
-  console.log("🚀 ~ ThreadList ~ categories:", categories);
+export default function ThreadList({
+  threads,
+  upVote,
+  downVote,
+  categories,
+  authUser,
+}) {
+  console.log('🚀 ~ ThreadList ~ categories:', categories);
   return (
     <>
       {threads?.map((thread, index) => (
-        <ThreadItem key={index} {...thread} upVote={upVote} downVote={downVote} authUser={authUser} />
+        <ThreadItem
+          key={index}
+          {...thread}
+          upVote={upVote}
+          downVote={downVote}
+          authUser={authUser}
+        />
       ))}
     </>
   );

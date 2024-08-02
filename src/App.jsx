@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { asyncPreloadProcess } from "./states/isPreload/action";
-import { asyncUnsetAuthUser } from "./states/authUser/action";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import LeaderboardPage from "./pages/LeaderboardPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import ThreadDetailPage from "./pages/ThreadDetailPage";
-import Navbar from "./components/Navbar";
-import Loading from "./components/Loading";
-import ProfilePage from "./pages/ProfilePage";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncPreloadProcess } from './states/isPreload/action';
+import { asyncUnsetAuthUser } from './states/authUser/action';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LeaderboardPage from './pages/LeaderboardPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ThreadDetailPage from './pages/ThreadDetailPage';
+import Navbar from './components/Navbar';
+import Loading from './components/Loading';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
-  const { authUser = null, isPreload = false } = useSelector((states) => states);
+  const { authUser = null, isPreload = false } = useSelector(states => states);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const App = () => {
   }, [dispatch]);
 
   const onSignOut = () => {
-    console.log("🚀 ~ App ~ onSignOut ~ authUser:", authUser);
+    console.log('🚀 ~ App ~ onSignOut ~ authUser:', authUser);
     dispatch(asyncUnsetAuthUser());
   };
 
@@ -64,4 +64,3 @@ const App = () => {
 };
 
 export default App;
-

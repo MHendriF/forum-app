@@ -7,7 +7,7 @@ function commentsReducer(comments = [], action = {}) {
     case ActionType.ADD_COMMENT:
       return [action.payload.comment, ...comments];
     case ActionType.UPVOTE_COMMENT:
-      return comments.map((comment) => {
+      return comments.map(comment => {
         if (comment.id === action.payload.commentId) {
           return {
             ...comment,
@@ -15,7 +15,7 @@ function commentsReducer(comments = [], action = {}) {
               ? comment.upVotesBy
               : comment.upVotesBy.concat([action.payload.userId]),
             downVotesBy: comment.downVotesBy.includes(action.payload.userId)
-              ? comment.downVotesBy.filter((id) => id !== action.payload.userId)
+              ? comment.downVotesBy.filter(id => id !== action.payload.userId)
               : comment.downVotesBy,
           };
         }
@@ -23,12 +23,12 @@ function commentsReducer(comments = [], action = {}) {
         return comment;
       });
     case ActionType.DOWNVOTE_COMMENT:
-      return comments.map((comment) => {
+      return comments.map(comment => {
         if (comment.id === action.payload.commentId) {
           return {
             ...comment,
             upVotesBy: comment.upVotesBy.includes(action.payload.userId)
-              ? comment.upVotesBy.filter((id) => id !== action.payload.userId)
+              ? comment.upVotesBy.filter(id => id !== action.payload.userId)
               : comment.upVotesBy,
             downVotesBy: comment.downVotesBy.includes(action.payload.userId)
               ? comment.downVotesBy

@@ -1,6 +1,6 @@
-import Label from "./Label";
-import Textarea from "./Textarea";
-import PropTypes from "prop-types";
+import Label from './Label';
+import Textarea from './Textarea';
+import PropTypes from 'prop-types';
 
 export default function TextareaForm({ label, name, register, errors }) {
   return (

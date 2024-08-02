@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { postedAt } from "../utils";
-import Avatar from "./Avatar";
-import { FaRegCommentDots } from "react-icons/fa";
-import { FaDownLong, FaUpLong } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { postedAt } from '../utils';
+import Avatar from './Avatar';
+import { FaRegCommentDots } from 'react-icons/fa';
+import { FaDownLong, FaUpLong } from 'react-icons/fa6';
 
 export const ThreadItem = ({
   id,
@@ -61,14 +61,16 @@ export const ThreadItem = ({
                   <FaUpLong
                     onClick={onUpVoteClick}
                     className={`w-8 h-8 text-gray-500 p-2 hover:bg-slate-700 hover:text-white cursor-pointer rounded-sm ${
-                      isUpVoted && "text-green-500"
+                      isUpVoted && 'text-green-500'
                     }`}
                   />
-                  <p className="text-md p-1 text-gray-500">{upVotesBy?.length}</p>
+                  <p className="text-md p-1 text-gray-500">
+                    {upVotesBy?.length}
+                  </p>
                   <FaDownLong
                     onClick={onDownVoteClick}
                     className={`w-8 h-8 text-gray-500 p-2 hover:bg-slate-700 hover:text-white cursor-pointer  rounded-sm ${
-                      isDownVoted && "text-red-500"
+                      isDownVoted && 'text-red-500'
                     }`}
                   />
                 </div>

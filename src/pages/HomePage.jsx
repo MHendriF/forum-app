@@ -1,16 +1,20 @@
-import ThreadList from "../components/ThreadList";
-import { useSelector, useDispatch } from "react-redux";
-import { asyncPopulateUsersAndThreads } from "../states/shared/action";
-import { asyncAddThread, asyncUpVoteThread, asyncDownVoteThread } from "../states/threads/action";
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import FloatingButton from "../components/FloatingButton";
-import Modal from "../components/Modal";
-import ThreadForm from "../components/form/ThreadForm";
-import CategoryCard from "../components/CategoryCard";
+import ThreadList from '../components/ThreadList';
+import { useSelector, useDispatch } from 'react-redux';
+import { asyncPopulateUsersAndThreads } from '../states/shared/action';
+import {
+  asyncAddThread,
+  asyncUpVoteThread,
+  asyncDownVoteThread,
+} from '../states/threads/action';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import FloatingButton from '../components/FloatingButton';
+import Modal from '../components/Modal';
+import ThreadForm from '../components/form/ThreadForm';
+import CategoryCard from '../components/CategoryCard';
 
 export default function HomePage() {
-  const { threads = [], users = [], authUser } = useSelector((states) => states);
+  const { threads = [], users = [], authUser } = useSelector(states => states);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,38 +27,39 @@ export default function HomePage() {
     closeModal();
   };
 
-  const onUpVote = (threadId) => {
+  const onUpVote = threadId => {
     dispatch(asyncUpVoteThread(threadId));
   };
 
-  const onDownVote = (threadId) => {
+  const onDownVote = threadId => {
     dispatch(asyncDownVoteThread(threadId));
   };
 
-  const threadList = threads.map((thread) => ({
+  const threadList = threads.map(thread => ({
     ...thread,
-    user: users.find((user) => user.id === thread?.ownerId),
+    user: users.find(user => user.id === thread?.ownerId),
     authUser: authUser.id,
   }));
   //console.log("🚀 ~ threadList ~ threadList:", threadList);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const params = searchParams.get("category");
-  const categories = [...new Set(threads.map((thread) => thread?.category))];
-  const categoriesList = [...new Set(categories)];
+  const params = searchParams.get('category');
+  const categories = [...new Set(threads.map(thread => thread?.category))];
 
-  const onClickCategory = (category) => {
+  const onClickCategory = category => {
     if (params === category) {
-      setSearchParams("");
+      setSearchParams('');
     } else {
       setSearchParams({ category });
     }
-    console.log("🚀 ~ onClickCategory ~ category:", category);
-    console.log("🚀 ~ onClickCategory ~ params:", params);
+    console.log('🚀 ~ onClickCategory ~ category:', category);
+    console.log('🚀 ~ onClickCategory ~ params:', params);
   };
 
-  const filteredThreads = threadList.filter((thread) => thread?.category.includes(params));
-  console.log("🚀 ~ HomePage ~ filteredThreads:", filteredThreads);
+  const filteredThreads = threadList.filter(thread =>
+    thread?.category.includes(params),
+  );
+  console.log('🚀 ~ HomePage ~ filteredThreads:', filteredThreads);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -86,7 +91,7 @@ export default function HomePage() {
             threads={params ? filteredThreads : threadList}
             upVote={onUpVote}
             downVote={onDownVote}
-            categories={categoriesList}
+            categories={categories}
             onClickCategory={onClickCategory}
             params={params}
           />

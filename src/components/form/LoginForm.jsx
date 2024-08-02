@@ -1,9 +1,9 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import PropTypes from "prop-types";
-import InputForm from "../inputs/InputForm";
-import Button from "../Button";
-import { LoginFormValidation } from "../../utils/validation";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import PropTypes from 'prop-types';
+import InputForm from '../inputs/InputForm';
+import Button from '../Button';
+import { LoginFormValidation } from '../../utils/validation';
 
 export default function LoginForm({ onLogin }) {
   const {
@@ -15,8 +15,8 @@ export default function LoginForm({ onLogin }) {
     resolver: zodResolver(LoginFormValidation),
   });
 
-  const onSubmit = (data) => {
-    console.log("Form is valid, submitting...", data);
+  const onSubmit = data => {
+    console.log('Form is valid, submitting...', data);
     onLogin(data);
     reset();
     // Add your form submission logic here
@@ -46,7 +46,7 @@ export default function LoginForm({ onLogin }) {
           <Button text="Login" type="submit" />
         </form>
         <p className="text-center mt-4">
-          Don&apos;t have an account?{" "}
+          Don&apos;t have an account?{' '}
           <a href="/register" className="text-blue-500">
             Register
           </a>

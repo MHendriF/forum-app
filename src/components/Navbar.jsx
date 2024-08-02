@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { FaHome, FaTrophy, FaBars, FaTimes, FaUser } from "react-icons/fa";
-import { useState } from "react";
-import NavbarLink from "./NavbarLink";
-import { FaArrowRightToBracket } from "react-icons/fa6";
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { FaHome, FaTrophy, FaBars, FaTimes, FaUser } from 'react-icons/fa';
+import { useState } from 'react';
+import NavbarLink from './NavbarLink';
+import { FaArrowRightToBracket } from 'react-icons/fa6';
 
 export default function Navbar({ authUser, signOut }) {
   //console.log("🚀 ~ Navbar ~ authUser:", authUser);
@@ -16,7 +16,10 @@ export default function Navbar({ authUser, signOut }) {
     <nav className="bg-slate-700 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-2xl font-bold">
-          <Link to="/" className="hover:text-slate-400 transition duration-300 ease-in-out">
+          <Link
+            to="/"
+            className="hover:text-slate-400 transition duration-300 ease-in-out"
+          >
             Forum App
           </Link>
         </div>
@@ -42,8 +45,15 @@ export default function Navbar({ authUser, signOut }) {
           )}
         </div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white focus:outline-none">
-            {isOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+          <button
+            onClick={toggleMenu}
+            className="text-white focus:outline-none"
+          >
+            {isOpen ? (
+              <FaTimes className="w-6 h-6" />
+            ) : (
+              <FaBars className="w-6 h-6" />
+            )}
           </button>
         </div>
       </div>

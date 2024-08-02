@@ -1,11 +1,11 @@
-import api from "../../utils/api";
-import { hideLoading, showLoading } from "react-redux-loading-bar";
+import api from '../../utils/api';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 const ActionType = {
-  RECEIVE_THREAD_DETAIL: "RECEIVE_THREAD_DETAIL",
-  CLEAR_THREAD_DETAIL: "CLEAR_THREAD_DETAIL",
-  UPVOTE_THREAD_DETAIL: "UPVOTE_THREAD_DETAIL",
-  DOWNVOTE_THREAD_DETAIL: "DOWNVOTE_THREAD_DETAIL",
+  RECEIVE_THREAD_DETAIL: 'RECEIVE_THREAD_DETAIL',
+  CLEAR_THREAD_DETAIL: 'CLEAR_THREAD_DETAIL',
+  UPVOTE_THREAD_DETAIL: 'UPVOTE_THREAD_DETAIL',
+  DOWNVOTE_THREAD_DETAIL: 'DOWNVOTE_THREAD_DETAIL',
 };
 
 function receiveThreadDetailActionCreator(threadDetail) {
@@ -44,7 +44,7 @@ function downVoteThreadDetailActionCreator({ threadId, userId }) {
 }
 
 function asyncReceiveThreadDetail(threadId) {
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch(showLoading());
     dispatch(clearThreadDetailActionCreator());
 
@@ -62,13 +62,17 @@ function asyncUpVoteThreadDetail(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
-    dispatch(upVoteThreadDetailActionCreator({ threadId, userId: authUser.id }));
+    dispatch(
+      upVoteThreadDetailActionCreator({ threadId, userId: authUser.id }),
+    );
 
     try {
       await api.upVoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(upVoteThreadDetailActionCreator({ threadId, userId: authUser.id }));
+      dispatch(
+        upVoteThreadDetailActionCreator({ threadId, userId: authUser.id }),
+      );
     }
     dispatch(hideLoading());
   };
@@ -78,13 +82,17 @@ function asyncDownVoteThreadDetail(threadId) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { authUser } = getState();
-    dispatch(downVoteThreadDetailActionCreator({ threadId, userId: authUser.id }));
+    dispatch(
+      downVoteThreadDetailActionCreator({ threadId, userId: authUser.id }),
+    );
 
     try {
       await api.downVoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatch(downVoteThreadDetailActionCreator({ threadId, userId: authUser.id }));
+      dispatch(
+        downVoteThreadDetailActionCreator({ threadId, userId: authUser.id }),
+      );
     }
     dispatch(hideLoading());
   };

@@ -13,16 +13,14 @@ function threadDetailReducer(threadDetail = [], action = {}) {
           ? threadDetail.upVotesBy
           : threadDetail.upVotesBy.concat(action.payload.userId),
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
-          ? threadDetail.downVotesBy.filter(
-              (id) => id !== action.payload.userId
-            )
+          ? threadDetail.downVotesBy.filter(id => id !== action.payload.userId)
           : threadDetail.downVotesBy,
       };
     case ActionType.DOWNVOTE_THREAD_DETAIL:
       return {
         ...threadDetail,
         upVotesBy: threadDetail.upVotesBy.includes(action.payload.userId)
-          ? threadDetail.upVotesBy.filter((id) => id !== action.payload.userId)
+          ? threadDetail.upVotesBy.filter(id => id !== action.payload.userId)
           : threadDetail.upVotesBy,
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
           ? threadDetail.downVotesBy

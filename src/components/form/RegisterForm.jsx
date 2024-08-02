@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import InputForm from "../inputs/InputForm";
-import Button from "../Button";
-import { RegisterFormValidation } from "../../utils/validation";
+import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import InputForm from '../inputs/InputForm';
+import Button from '../Button';
+import { RegisterFormValidation } from '../../utils/validation';
 
 export default function RegisterForm({ onRegister }) {
   const {
@@ -15,8 +15,8 @@ export default function RegisterForm({ onRegister }) {
     resolver: zodResolver(RegisterFormValidation),
   });
 
-  const onSubmit = (data) => {
-    console.log("Form is valid, submitting...", data);
+  const onSubmit = data => {
+    console.log('Form is valid, submitting...', data);
     onRegister(data);
     reset();
     // Add your form submission logic here
@@ -54,7 +54,7 @@ export default function RegisterForm({ onRegister }) {
           <Button text="Register" type="submit" />
         </form>
         <p className="text-center mt-4">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <a href="/login" className="text-blue-500">
             Login
           </a>

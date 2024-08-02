@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import Button from "../Button";
-import TextareaForm from "../inputs/TextareaForm";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CommentFormValidation } from "../../utils/validation";
+import PropTypes from 'prop-types';
+import Button from '../Button';
+import TextareaForm from '../inputs/TextareaForm';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CommentFormValidation } from '../../utils/validation';
 
 export default function CommentForm({ addComment, id }) {
   const {
@@ -15,8 +15,8 @@ export default function CommentForm({ addComment, id }) {
     resolver: zodResolver(CommentFormValidation),
   });
 
-  const onSubmit = (data) => {
-    console.log("Form is valid, submitting...", data);
+  const onSubmit = data => {
+    console.log('Form is valid, submitting...', data);
     addComment(data.content, id);
     reset();
     // Add your form submission logic here
@@ -24,7 +24,12 @@ export default function CommentForm({ addComment, id }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mb-5">
-      <TextareaForm label="Add a Comment" name="content" register={register} errors={errors} />
+      <TextareaForm
+        label="Add a Comment"
+        name="content"
+        register={register}
+        errors={errors}
+      />
       <Button text="Submit" type="submit" />
     </form>
   );

@@ -1,12 +1,19 @@
-import CommentForm from "./form/CommentForm";
-import CommentItem from "./CommentItem";
-import PropTypes, { object } from "prop-types";
+import CommentForm from './form/CommentForm';
+import CommentItem from './CommentItem';
+import PropTypes, { object } from 'prop-types';
 
-export default function ThreadComment({ id, addComment, upVoteComment, downVoteComment, comments, authUser }) {
+export default function ThreadComment({
+  id,
+  addComment,
+  upVoteComment,
+  downVoteComment,
+  comments,
+  authUser,
+}) {
   return (
     <div className="flex flex-col">
       <CommentForm addComment={addComment} id={id} />
-      {comments?.map((comment) => (
+      {comments?.map(comment => (
         <CommentItem
           key={comment.id}
           {...comment}

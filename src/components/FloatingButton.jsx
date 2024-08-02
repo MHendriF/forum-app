@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { FaPlus } from "react-icons/fa6";
+import PropTypes from 'prop-types';
+import { FaPlus } from 'react-icons/fa6';
 
 export default function FloatingButton({ onClick }) {
   return (

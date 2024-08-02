@@ -1,11 +1,11 @@
-import api from "../../utils/api";
-import { receiveThreadDetailActionCreator } from "../threadDetail/action";
-import { hideLoading, showLoading } from "react-redux-loading-bar";
+import api from '../../utils/api';
+import { receiveThreadDetailActionCreator } from '../threadDetail/action';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 const ActionType = {
-  ADD_COMMENT: "ADD_COMMENT",
-  UPVOTE_COMMENT: "UPVOTE_COMMENT",
-  DOWNVOTE_COMMENT: "DOWNVOTE_COMMENT",
+  ADD_COMMENT: 'ADD_COMMENT',
+  UPVOTE_COMMENT: 'UPVOTE_COMMENT',
+  DOWNVOTE_COMMENT: 'DOWNVOTE_COMMENT',
 };
 
 function addCommentActionCreator(comment) {
@@ -84,7 +84,9 @@ function asyncDownVoteComment(commentId) {
       dispatch(receiveThreadDetailActionCreator(newThreadDetail));
     } catch (error) {
       alert(error.message);
-      dispatch(downVoteCommentActionCreator({ commentId, userId: authUser.id }));
+      dispatch(
+        downVoteCommentActionCreator({ commentId, userId: authUser.id }),
+      );
     }
     dispatch(hideLoading());
   };

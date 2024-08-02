@@ -1,10 +1,10 @@
-import Button from "../Button";
-import InputForm from "../inputs/InputForm";
-import PropTypes from "prop-types";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ThreadFormValidation } from "../../utils/validation";
-import TextareaForm from "../inputs/TextareaForm";
+import Button from '../Button';
+import InputForm from '../inputs/InputForm';
+import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ThreadFormValidation } from '../../utils/validation';
+import TextareaForm from '../inputs/TextareaForm';
 
 export default function ThreadForm({ addThread }) {
   const {
@@ -16,8 +16,8 @@ export default function ThreadForm({ addThread }) {
     resolver: zodResolver(ThreadFormValidation),
   });
 
-  const onSubmit = (data) => {
-    console.log("Form is valid, submitting...", data);
+  const onSubmit = data => {
+    console.log('Form is valid, submitting...', data);
     addThread(data);
     reset();
     // Add your form submission logic here
@@ -33,8 +33,20 @@ export default function ThreadForm({ addThread }) {
         register={register}
         errors={errors}
       />
-      <InputForm label="Category" name="category" type="text" placeholder="" register={register} errors={errors} />
-      <TextareaForm label="Content" name="body" register={register} errors={errors} />
+      <InputForm
+        label="Category"
+        name="category"
+        type="text"
+        placeholder=""
+        register={register}
+        errors={errors}
+      />
+      <TextareaForm
+        label="Content"
+        name="body"
+        register={register}
+        errors={errors}
+      />
       <Button text="Create New Thread" type="submit" />
     </form>
   );

@@ -1,7 +1,7 @@
-import Avatar from "./Avatar";
-import { postedAt } from "../utils";
-import { FaDownLong, FaUpLong } from "react-icons/fa6";
-import PropTypes from "prop-types";
+import Avatar from './Avatar';
+import { postedAt } from '../utils';
+import { FaDownLong, FaUpLong } from 'react-icons/fa6';
+import PropTypes from 'prop-types';
 
 export default function CommentItem({
   id,
@@ -51,14 +51,14 @@ export default function CommentItem({
                 <FaUpLong
                   onClick={onUpVoteClick}
                   className={`w-8 h-8 text-gray-500 p-2 hover:bg-slate-700 hover:text-white cursor-pointer rounded-sm ${
-                    isUpVoted && "text-green-500"
+                    isUpVoted && 'text-green-500'
                   }`}
                 />
                 <p className="text-md p-1 text-gray-500">{upVotesBy?.length}</p>
                 <FaDownLong
                   onClick={onDownVoteClick}
                   className={`w-8 h-8 text-gray-500 p-2 hover:bg-slate-700 hover:text-white cursor-pointer  rounded-sm ${
-                    isDownVoted && "text-red-500"
+                    isDownVoted && 'text-red-500'
                   }`}
                 />
               </div>

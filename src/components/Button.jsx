@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-export default function Button({ children, text, type = "submit" }) {
+export default function Button({ children, text, type = 'submit' }) {
   return (
     <button
       type={type}
