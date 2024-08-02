@@ -11,6 +11,7 @@ import ThreadDetailPage from './pages/ThreadDetailPage';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
 import ProfilePage from './pages/ProfilePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   const { authUser = null, isPreload = false } = useSelector(states => states);
@@ -34,8 +35,9 @@ const App = () => {
         <Loading />
         <main>
           <Routes>
-            <Route path="/*" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
       </>
@@ -54,6 +56,7 @@ const App = () => {
           <Route path="/thread/:id" element={<ThreadDetailPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </>
