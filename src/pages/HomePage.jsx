@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FloatingButton from "../components/FloatingButton";
 import Modal from "../components/Modal";
-import FormThread from "../components/form/FormThread";
+import ThreadForm from "../components/form/ThreadForm";
 import CategoryCard from "../components/CategoryCard";
 
 export default function HomePage() {
@@ -63,7 +63,7 @@ export default function HomePage() {
     <div className="container mx-auto pt-10 w-full max-w-5xl bg-white">
       <FloatingButton onClick={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <FormThread addThread={onAddThread} />
+        <ThreadForm addThread={onAddThread} />
       </Modal>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-4">
         <div className="md:col-span-1">

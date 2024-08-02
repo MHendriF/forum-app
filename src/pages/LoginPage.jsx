@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { asyncSetAuthUser } from "../states/authUser/action";
-import FormLogin from "../components/form/FormLogin";
+import LoginForm from "../components/form/LoginForm";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -13,5 +13,5 @@ export default function LoginPage() {
     navigate("/");
   };
 
-  return <FormLogin login={onLogin} />;
+  return <LoginForm onLogin={onLogin} />;
 }

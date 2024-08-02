@@ -1,4 +1,4 @@
-import FormRegister from "../components/form/FormRegister";
+import RegisterForm from "../components/form/RegisterForm";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { asyncRegisterUser } from "../states/users/action";
@@ -12,5 +12,5 @@ export default function RegisterPage() {
     navigate("/");
   };
 
-  return <FormRegister register={onRegister} />;
+  return <RegisterForm onRegister={onRegister} />;
 }

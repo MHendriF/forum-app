@@ -2,11 +2,11 @@ import Label from "./Label";
 import Textarea from "./Textarea";
 import PropTypes from "prop-types";
 
-export default function TextareaForm({ label, name, value, onChange }) {
+export default function TextareaForm({ label, name, register, errors }) {
   return (
     <div className="mb-6">
       <Label htmlFor={name}>{label}</Label>
-      <Textarea name={name} value={value} onChange={onChange}></Textarea>
+      <Textarea name={name} register={register} errors={errors}></Textarea>
     </div>
   );
 }
@@ -14,6 +14,6 @@ export default function TextareaForm({ label, name, value, onChange }) {
 TextareaForm.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  register: PropTypes.func,
+  errors: PropTypes.object,
 };
