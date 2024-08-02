@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../Button";
 import InputForm from "../inputs/InputForm";
 import TextareaForm from "../inputs/TextareaForm";
+import PropTypes from "prop-types";
 
 export default function FormThread({ addThread }) {
   const [title, setTitle] = useState("");
@@ -11,7 +12,6 @@ export default function FormThread({ addThread }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addThread({ title, body, category });
-    console.log("🚀 ~ addThread ~ title:", title, "body:", body, "category:", category);
     setTitle("");
     setCategory("");
     setBody("");
@@ -26,3 +26,7 @@ export default function FormThread({ addThread }) {
     </form>
   );
 }
+
+FormThread.propTypes = {
+  addThread: PropTypes.func.isRequired,
+};

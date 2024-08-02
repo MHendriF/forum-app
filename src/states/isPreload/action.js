@@ -21,15 +21,15 @@ function asyncPreloadProcess() {
     try {
       // preload process
       const authUser = await api.getOwnProfile();
-      console.log("🚀 ~ return ~ authUser:", authUser);
+      //console.log("🚀 ~ return ~ authUser:", authUser);
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
-      console.log("🚀 ~ return ~ error:", error);
+      //console.log("🚀 ~ return ~ error:", error);
       // fallback process
       dispatch(setAuthUserActionCreator(null));
     } finally {
       // end preload process
-      console.log("setIsPreloadActionCreator: ", false);
+      //console.log("setIsPreloadActionCreator: ", false);
       dispatch(setIsPreloadActionCreator(false));
     }
     dispatch(hideLoading());

@@ -1,5 +1,6 @@
 import Label from "./Label";
 import Textarea from "./Textarea";
+import PropTypes from "prop-types";
 
 const TextareaForm = ({ label, name, value, onChange }) => {
   return (

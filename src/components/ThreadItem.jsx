@@ -30,8 +30,8 @@ export const ThreadItem = ({
   const isUpVoted = upVotesBy?.includes(authUser?.id);
   const isDownVoted = downVotesBy?.includes(authUser?.id);
 
-  console.log("🚀 ~ isUpVoted:", upVotesBy);
-  console.log("🚀 ~ isDownVoted:", downVotesBy);
+  //console.log("🚀 ~ isUpVoted:", upVotesBy);
+  //console.log("🚀 ~ isDownVoted:", downVotesBy);
 
   return (
     <div className="block hover:bg-slate-300 transition duration-300 ease-in-out rounded-lg">

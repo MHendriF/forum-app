@@ -1,8 +1,8 @@
 import { ThreadItem } from "./ThreadItem";
 import PropTypes from "prop-types";
 
-const ThreadList = ({ threads, upVote, downVote, categories, onClickCategory, params, authUser }) => {
-  console.log("🚀 ~ ThreadList ~ threads:", threads);
+const ThreadList = ({ threads, upVote, downVote, categories, authUser }) => {
+  console.log("🚀 ~ ThreadList ~ categories:", categories);
   return (
     <>
       {threads?.map((thread, index) => (

@@ -8,7 +8,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const onLogin = ({ email, password }) => {
-    console.log("🚀 ~ onLogin:", email, password);
+    //console.log("🚀 ~ onLogin:", email, password);
     dispatch(asyncSetAuthUser({ email, password }));
     navigate("/");
   };

@@ -15,7 +15,6 @@ export default function ThreadDetail({
   downVotesBy,
   upVote,
   downVote,
-  totalComments,
   authUser,
 }) {
   const onUpVoteClick = () => {
@@ -28,10 +27,10 @@ export default function ThreadDetail({
 
   const isUpVoted = upVotesBy?.includes(authUser?.id);
   const isDownVoted = downVotesBy?.includes(authUser?.id);
-  console.log("🚀 ~ ThreadDetail ~ totalComments:", totalComments);
+  //console.log("🚀 ~ ThreadDetail ~ totalComments:", totalComments);
 
   return (
-    <div className="border p-4 mb-4 rounded-lg">
+    <div className="border mb-4 p-4 rounded-lg">
       <div className="flex justify-between">
         <Avatar src={owner?.avatar} alt={owner?.name} />
         <div className="flex-1">
@@ -88,6 +87,5 @@ ThreadDetail.propTypes = {
   downVotesBy: PropTypes.array,
   upVote: PropTypes.func,
   downVote: PropTypes.func,
-  totalComments: PropTypes.number,
   authUser: PropTypes.object,
 };

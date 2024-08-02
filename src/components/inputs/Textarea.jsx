@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Textarea = ({ name, value, onChange }) => {
   return (
     <textarea

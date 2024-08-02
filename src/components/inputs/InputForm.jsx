@@ -1,5 +1,6 @@
 import Label from "./Label";
 import Input from "./Input";
+import PropTypes from "prop-types";
 
 const InputForm = ({ label, name, type, placeholder, value, onChange }) => {
   return (

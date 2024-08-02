@@ -16,18 +16,18 @@ const Leaderboard = () => {
   if (!leaderboards) {
     return null;
   }
-  console.log("🚀 ~ Leaderboard :", leaderboards);
+  //console.log("🚀 ~ Leaderboard :", leaderboards);
   return (
     <>
-      <h1 className="text-2xl font-bold mb-6 text-center">Leaderboard</h1>
+      <h1 className="text-xl font-bold mb-6 text-center">Leaderboard</h1>
       <div className="grid gap-4">
         {leaderboards.length > 0 &&
           leaderboards.map((user, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-md flex items-center justify-between">
               <div className="flex items-center">
-                <span className="text-lg font-bold mr-4">{index + 1}.</span>
+                <span className="text-md font-bold mr-4">{index + 1}.</span>
                 <Avatar src={user.user.avatar} alt={user.user.name} />
-                <h2 className="text-lg font-bold">{user.user.name}</h2>
+                <h2 className="text-md text-gray-800 font-bold">{user.user.name}</h2>
               </div>
               <p className="text-gray-700">Score: {user.score}</p>
             </div>

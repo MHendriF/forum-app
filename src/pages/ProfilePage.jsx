@@ -3,7 +3,7 @@ import Avatar from "../components/Avatar";
 
 export default function ProfilePage() {
   const { authUser } = useSelector((states) => states);
-  console.log("🚀 ~ ProfilePage ~ authUser:", authUser);
+  //console.log("🚀 ~ ProfilePage ~ authUser:", authUser);
 
   return (
     // <div className="container mx-auto pt-4">

@@ -7,7 +7,7 @@ import NavbarLink from "./NavbarLink";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
 const Navbar = ({ authUser, signOut }) => {
-  console.log("🚀 ~ Navbar ~ authUser:", authUser);
+  //console.log("🚀 ~ Navbar ~ authUser:", authUser);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -52,6 +52,12 @@ const Navbar = ({ authUser, signOut }) => {
           </NavbarLink>
           <NavbarLink link="/leaderboard" className="block py-2">
             <FaTrophy className="mr-2 inline-block" /> Leaderboard
+          </NavbarLink>
+          <NavbarLink link="/" className="block py-2">
+            <FaUser className="mr-2 inline-block" /> My Profile
+          </NavbarLink>
+          <NavbarLink link="/" className="block py-2">
+            <FaArrowRightToBracket className="mr-2 inline-block" /> Logout
           </NavbarLink>
         </div>
       )}

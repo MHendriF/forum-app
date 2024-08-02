@@ -18,8 +18,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
-    console.log("🚀 ~ App ~ authUser:", authUser);
-    console.log("🚀 ~ App ~ isPreload:", isPreload);
+    //console.log("🚀 ~ App ~ authUser:", authUser);
+    //console.log("🚀 ~ App ~ isPreload:", isPreload);
   }, [dispatch]);
 
   const onSignOut = () => {

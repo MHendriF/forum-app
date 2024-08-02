@@ -42,17 +42,19 @@ const ThreadDetailPage = () => {
   if (!threadDetail) {
     return null;
   }
-  console.log("🚀 ~ ThreadDetailPage ~ threadDetail:", threadDetail);
+  //console.log("🚀 ~ ThreadDetailPage ~ threadDetail:", threadDetail);
   return (
-    <div className="container mx-auto pt-10 w-full max-w-3xl bg-white flex flex-col gap-4">
-      <ThreadDetail {...threadDetail} authUser={authUser} upVote={onUpVote} downVote={onDownVote} />
-      <ThreadComment
-        {...threadDetail}
-        authUser={authUser}
-        addComment={onAddComment}
-        upVoteComment={onUpVoteComment}
-        downVoteComment={onDownVoteComment}
-      />
+    <div className="container mx-auto pt-10 w-full max-w-3xl bg-white flex flex-col gap-4 ">
+      <div className=" mx-4">
+        <ThreadDetail {...threadDetail} authUser={authUser} upVote={onUpVote} downVote={onDownVote} />
+        <ThreadComment
+          {...threadDetail}
+          authUser={authUser}
+          addComment={onAddComment}
+          upVoteComment={onUpVoteComment}
+          downVoteComment={onDownVoteComment}
+        />
+      </div>
     </div>
   );
 };

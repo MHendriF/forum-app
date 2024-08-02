@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Input = ({ type, placeholder, name, value, onChange }) => {
   return (
     <input
