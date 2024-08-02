@@ -16,10 +16,8 @@ export default function CommentForm({ addComment, id }) {
   });
 
   const onSubmit = data => {
-    console.log('Form is valid, submitting...', data);
     addComment(data.content, id);
     reset();
-    // Add your form submission logic here
   };
 
   return (

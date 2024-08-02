@@ -27,7 +27,6 @@ export default function ThreadDetail({
 
   const isUpVoted = upVotesBy?.includes(authUser?.id);
   const isDownVoted = downVotesBy?.includes(authUser?.id);
-  //console.log("🚀 ~ ThreadDetail ~ totalComments:", totalComments);
 
   return (
     <div className="border mb-4 p-4 rounded-lg">

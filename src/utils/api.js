@@ -56,9 +56,7 @@ const api = (() => {
         password,
       }),
     });
-    //console.log("🚀 ~ login ~ response:", response);
     const responseJson = await response.json();
-    //console.log("🚀 ~ login ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -77,7 +75,6 @@ const api = (() => {
     const response = await fetch(`${BASE_URL}/users`);
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ getAllUsers ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -94,9 +91,7 @@ const api = (() => {
 
   async function getOwnProfile() {
     const response = await _fetchWithAuth(`${BASE_URL}/users/me`);
-
     const responseJson = await response.json();
-    //console.log("🚀 ~ getOwnProfile ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -125,8 +120,6 @@ const api = (() => {
     });
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ createThread ~ responseJson:", responseJson);
-
     const { status, message } = responseJson;
 
     if (status !== 'success') {
@@ -142,9 +135,7 @@ const api = (() => {
 
   async function getAllThreads() {
     const response = await fetch(`${BASE_URL}/threads`);
-
     const responseJson = await response.json();
-    //console.log("🚀 ~ getAllThreads ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -161,9 +152,7 @@ const api = (() => {
 
   async function getDetailThread(threadId) {
     const response = await fetch(`${BASE_URL}/threads/${threadId}`);
-
     const responseJson = await response.json();
-    //console.log("🚀 ~ getDetailThread ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -191,7 +180,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ createComment ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -219,7 +207,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ upVoteThread ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -241,7 +228,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ downVoteThread ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -263,7 +249,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ neutralVoteThread ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -286,7 +271,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ upVoteComment ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -309,7 +293,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ downVoteComment ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -332,7 +315,6 @@ const api = (() => {
     );
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ neutralVoteComment ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 
@@ -345,7 +327,6 @@ const api = (() => {
     const response = await fetch(`${BASE_URL}/leaderboards`);
 
     const responseJson = await response.json();
-    //console.log("🚀 ~ getLeaderboards ~ responseJson:", responseJson);
 
     const { status, message } = responseJson;
 

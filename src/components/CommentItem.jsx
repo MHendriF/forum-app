@@ -25,9 +25,6 @@ export default function CommentItem({
   const isUpVoted = upVotesBy?.includes(authUser?.id);
   const isDownVoted = downVotesBy?.includes(authUser?.id);
 
-  //console.log("🚀 ~ isUpVoted:", upVotesBy);
-  //console.log("🚀 ~ content:", content);
-
   return (
     <div className="border-b p-4 mb-4 rounded-lg">
       <div className="flex justify-between">

@@ -10,7 +10,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import FloatingButton from '../components/FloatingButton';
 import Modal from '../components/Modal';
-import ThreadForm from '../components/form/ThreadForm';
+import ThreadForm from '../components/forms/ThreadForm';
 import CategoryCard from '../components/CategoryCard';
 
 export default function HomePage() {
@@ -40,7 +40,6 @@ export default function HomePage() {
     user: users.find(user => user.id === thread?.ownerId),
     authUser: authUser.id,
   }));
-  //console.log("🚀 ~ threadList ~ threadList:", threadList);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.get('category');
@@ -52,14 +51,11 @@ export default function HomePage() {
     } else {
       setSearchParams({ category });
     }
-    console.log('🚀 ~ onClickCategory ~ category:', category);
-    console.log('🚀 ~ onClickCategory ~ params:', params);
   };
 
   const filteredThreads = threadList.filter(thread =>
     thread?.category.includes(params),
   );
-  console.log('🚀 ~ HomePage ~ filteredThreads:', filteredThreads);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -91,7 +87,6 @@ export default function HomePage() {
             threads={params ? filteredThreads : threadList}
             upVote={onUpVote}
             downVote={onDownVote}
-            categories={categories}
             onClickCategory={onClickCategory}
             params={params}
           />

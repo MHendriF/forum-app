@@ -1,4 +1,4 @@
-import RegisterForm from '../components/form/RegisterForm';
+import RegisterForm from '../components/forms/RegisterForm';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { asyncRegisterUser } from '../states/users/action';

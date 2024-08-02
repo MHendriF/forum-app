@@ -1,40 +1,30 @@
-import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import PropTypes from 'prop-types';
 import InputForm from '../inputs/InputForm';
 import Button from '../Button';
-import { RegisterFormValidation } from '../../utils/validation';
+import { LoginFormValidation } from '../../utils/validation';
 
-export default function RegisterForm({ onRegister }) {
+export default function LoginForm({ onLogin }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
-    resolver: zodResolver(RegisterFormValidation),
+    resolver: zodResolver(LoginFormValidation),
   });
 
   const onSubmit = data => {
-    console.log('Form is valid, submitting...', data);
-    onRegister(data);
+    onLogin(data);
     reset();
-    // Add your form submission logic here
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <InputForm
-            label="Name"
-            name="name"
-            type="text"
-            placeholder="Enter your name"
-            register={register}
-            errors={errors}
-          />
           <InputForm
             label="Email"
             name="email"
@@ -51,12 +41,12 @@ export default function RegisterForm({ onRegister }) {
             register={register}
             errors={errors}
           />
-          <Button text="Register" type="submit" />
+          <Button text="Login" type="submit" />
         </form>
         <p className="text-center mt-4">
-          Already have an account?{' '}
-          <a href="/login" className="text-blue-500">
-            Login
+          Don&apos;t have an account?{' '}
+          <a href="/register" className="text-blue-500">
+            Register
           </a>
         </p>
       </div>
@@ -64,6 +54,6 @@ export default function RegisterForm({ onRegister }) {
   );
 }
 
-RegisterForm.propTypes = {
-  onRegister: PropTypes.func.isRequired,
+LoginForm.propTypes = {
+  onLogin: PropTypes.func.isRequired,
 };

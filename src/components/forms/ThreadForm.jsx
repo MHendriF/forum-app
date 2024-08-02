@@ -17,10 +17,8 @@ export default function ThreadForm({ addThread }) {
   });
 
   const onSubmit = data => {
-    console.log('Form is valid, submitting...', data);
     addThread(data);
     reset();
-    // Add your form submission logic here
   };
 
   return (

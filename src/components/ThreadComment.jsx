@@ -1,4 +1,4 @@
-import CommentForm from './form/CommentForm';
+import CommentForm from './forms/CommentForm';
 import CommentItem from './CommentItem';
 import PropTypes, { object } from 'prop-types';
 

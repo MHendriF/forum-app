@@ -25,15 +25,12 @@ function unsetAuthUserActionCreator() {
 }
 
 function asyncSetAuthUser({ email, password }) {
-  //console.log("🚀 ~ return ~ email:", email, "password:", password);
   return async dispatch => {
     dispatch(showLoading());
     try {
       const token = await api.login({ email, password });
-      //console.log("🚀 ~ return ~ token:", token);
       api.putAccessToken(token);
       const authUser = await api.getOwnProfile();
-      //console.log(authUser);
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
       alert(error.message);

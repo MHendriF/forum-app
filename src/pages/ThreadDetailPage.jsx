@@ -46,7 +46,7 @@ export default function ThreadDetailPage() {
   if (!threadDetail) {
     return null;
   }
-  //console.log("🚀 ~ ThreadDetailPage ~ threadDetail:", threadDetail);
+
   return (
     <div className="container mx-auto pt-10 w-full max-w-3xl bg-white flex flex-col gap-4 ">
       <div className="mx-4">
