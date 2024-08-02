@@ -16,30 +16,30 @@ import ThreadComment from '../components/ThreadComment';
 
 export default function ThreadDetailPage() {
   const { id } = useParams();
-  const { threadDetail = null, authUser } = useSelector(states => states);
+  const { threadDetail = null, authUser } = useSelector((states) => states);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(id));
   }, [id, dispatch]);
 
-  const onUpVote = threadId => {
+  const onUpVote = (threadId) => {
     dispatch(asyncUpVoteThreadDetail(threadId));
   };
 
-  const onDownVote = threadId => {
+  const onDownVote = (threadId) => {
     dispatch(asyncDownVoteThreadDetail(threadId));
   };
 
-  const onAddComment = content => {
+  const onAddComment = (content) => {
     dispatch(asyncAddComment({ threadId: id, content }));
   };
 
-  const onUpVoteComment = commentId => {
+  const onUpVoteComment = (commentId) => {
     dispatch(asyncUpVoteComment({ threadId: id, commentId }));
   };
 
-  const onDownVoteComment = commentId => {
+  const onDownVoteComment = (commentId) => {
     dispatch(asyncDownVoteComment({ threadId: id, commentId }));
   };
 

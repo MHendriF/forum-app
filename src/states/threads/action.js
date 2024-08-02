@@ -1,5 +1,5 @@
-import api from '../../utils/api';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import api from '../../utils/api';
 
 const ActionType = {
   ADD_THREAD: 'ADD_THREAD',
@@ -47,7 +47,7 @@ function downVoteThreadActionCreator({ threadId, userId }) {
 }
 
 function asyncAddThread({ title, body, category = 'all' }) {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch(showLoading());
     try {
       const thread = await api.createThread({ title, body, category });

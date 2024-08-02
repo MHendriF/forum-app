@@ -13,7 +13,7 @@ export default function ThreadComment({
   return (
     <div className="flex flex-col">
       <CommentForm addComment={addComment} id={id} />
-      {comments?.map(comment => (
+      {comments?.map((comment) => (
         <CommentItem
           key={comment.id}
           {...comment}

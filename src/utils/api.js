@@ -1,22 +1,19 @@
 const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1';
 
-  async function _fetchWithAuth(url, options = {}) {
+  async function fetchWithAuth(url, options = {}) {
+    const accessToken = localStorage.getItem('accessToken');
     return fetch(url, {
       ...options,
       headers: {
         ...options.headers,
-        Authorization: `Bearer ${getAccessToken()}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
   }
 
   function putAccessToken(token) {
     localStorage.setItem('accessToken', token);
-  }
-
-  function getAccessToken() {
-    return localStorage.getItem('accessToken');
   }
 
   async function register({ name, email, password }) {
@@ -90,7 +87,7 @@ const api = (() => {
   }
 
   async function getOwnProfile() {
-    const response = await _fetchWithAuth(`${BASE_URL}/users/me`);
+    const response = await fetchWithAuth(`${BASE_URL}/users/me`);
     const responseJson = await response.json();
 
     const { status, message } = responseJson;
@@ -107,7 +104,7 @@ const api = (() => {
   }
 
   async function createThread({ title, body, category }) {
-    const response = await _fetchWithAuth(`${BASE_URL}/threads`, {
+    const response = await fetchWithAuth(`${BASE_URL}/threads`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -168,7 +165,7 @@ const api = (() => {
   }
 
   async function createComment({ threadId, content }) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments`,
       {
         method: 'POST',
@@ -195,7 +192,7 @@ const api = (() => {
   }
 
   async function upVoteThread(threadId) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/up-vote`,
       {
         method: 'POST',
@@ -216,7 +213,7 @@ const api = (() => {
   }
 
   async function downVoteThread(threadId) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/down-vote`,
       {
         method: 'POST',
@@ -237,7 +234,7 @@ const api = (() => {
   }
 
   async function neutralVoteThread(threadId) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/neutral-vote`,
       {
         method: 'POST',
@@ -258,7 +255,7 @@ const api = (() => {
   }
 
   async function upVoteComment({ threadId, commentId }) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
       {
         method: 'POST',
@@ -280,7 +277,7 @@ const api = (() => {
   }
 
   async function downVoteComment({ threadId, commentId }) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
       {
         method: 'POST',
@@ -302,7 +299,7 @@ const api = (() => {
   }
 
   async function neutralVoteComment({ threadId, commentId }) {
-    const response = await _fetchWithAuth(
+    const response = await fetchWithAuth(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
       {
         method: 'POST',
@@ -343,7 +340,6 @@ const api = (() => {
 
   return {
     putAccessToken,
-    getAccessToken,
     register,
     login,
     getAllUsers,

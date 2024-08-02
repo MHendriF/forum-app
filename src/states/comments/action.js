@@ -1,6 +1,6 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { receiveThreadDetailActionCreator } from '../threadDetail/action';
-import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 const ActionType = {
   ADD_COMMENT: 'ADD_COMMENT',

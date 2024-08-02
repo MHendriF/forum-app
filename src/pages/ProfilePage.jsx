@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 export default function ProfilePage() {
-  const { authUser } = useSelector(states => states);
+  const { authUser } = useSelector((states) => states);
 
   return (
     <div className="container mx-auto pt-10 w-full max-w-3xl bg-white flex flex-col gap-4">

@@ -14,7 +14,11 @@ import ThreadForm from '../components/forms/ThreadForm';
 import CategoryCard from '../components/CategoryCard';
 
 export default function HomePage() {
-  const { threads = [], users = [], authUser } = useSelector(states => states);
+  const {
+    threads = [],
+    users = [],
+    authUser,
+  } = useSelector((states) => states);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -27,25 +31,25 @@ export default function HomePage() {
     closeModal();
   };
 
-  const onUpVote = threadId => {
+  const onUpVote = (threadId) => {
     dispatch(asyncUpVoteThread(threadId));
   };
 
-  const onDownVote = threadId => {
+  const onDownVote = (threadId) => {
     dispatch(asyncDownVoteThread(threadId));
   };
 
-  const threadList = threads.map(thread => ({
+  const threadList = threads.map((thread) => ({
     ...thread,
-    user: users.find(user => user.id === thread?.ownerId),
+    user: users.find((user) => user.id === thread?.ownerId),
     authUser: authUser.id,
   }));
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.get('category');
-  const categories = [...new Set(threads.map(thread => thread?.category))];
+  const categories = [...new Set(threads.map((thread) => thread?.category))];
 
-  const onClickCategory = category => {
+  const onClickCategory = (category) => {
     if (params === category) {
       setSearchParams('');
     } else {
@@ -53,7 +57,7 @@ export default function HomePage() {
     }
   };
 
-  const filteredThreads = threadList.filter(thread =>
+  const filteredThreads = threadList.filter((thread) =>
     thread?.category.includes(params),
   );
 

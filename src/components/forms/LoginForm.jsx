@@ -15,7 +15,7 @@ export default function LoginForm({ onLogin }) {
     resolver: zodResolver(LoginFormValidation),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     onLogin(data);
     reset();
   };

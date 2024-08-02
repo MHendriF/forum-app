@@ -14,7 +14,9 @@ import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
-  const { authUser = null, isPreload = false } = useSelector(states => states);
+  const { authUser = null, isPreload = false } = useSelector(
+    (states) => states,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

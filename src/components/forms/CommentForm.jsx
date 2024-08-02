@@ -15,7 +15,7 @@ export default function CommentForm({ addComment, id }) {
     resolver: zodResolver(CommentFormValidation),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     addComment(data.content, id);
     reset();
   };

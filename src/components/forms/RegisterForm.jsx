@@ -15,7 +15,7 @@ export default function RegisterForm({ onRegister }) {
     resolver: zodResolver(RegisterFormValidation),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     onRegister(data);
     reset();
   };

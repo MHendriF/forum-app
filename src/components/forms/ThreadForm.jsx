@@ -16,7 +16,7 @@ export default function ThreadForm({ addThread }) {
     resolver: zodResolver(ThreadFormValidation),
   });
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     addThread(data);
     reset();
   };

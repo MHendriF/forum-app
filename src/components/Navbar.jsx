@@ -17,7 +17,8 @@ export default function Navbar({ authUser, signOut }) {
         <div className="text-white text-2xl font-bold">
           <Link
             to="/"
-            className="hover:text-slate-400 transition duration-300 ease-in-out">
+            className="hover:text-slate-400 transition duration-300 ease-in-out"
+          >
             Forum App
           </Link>
         </div>
@@ -35,7 +36,8 @@ export default function Navbar({ authUser, signOut }) {
               </NavbarLink>
               <button
                 onClick={signOut}
-                className="flex items-center text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out">
+                className="flex items-center text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out"
+              >
                 <FaArrowRightToBracket className="mr-2" /> Logout
               </button>
             </>
@@ -44,7 +46,8 @@ export default function Navbar({ authUser, signOut }) {
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
-            className="text-white focus:outline-none">
+            className="text-white focus:outline-none"
+          >
             {isOpen ? (
               <FaTimes className="w-6 h-6" />
             ) : (
@@ -66,7 +69,8 @@ export default function Navbar({ authUser, signOut }) {
           </NavbarLink>
           <button
             onClick={signOut}
-            className="block py-2 text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out">
+            className="block py-2 text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out"
+          >
             <FaArrowRightToBracket className="mr-2 inline-block" /> Logout
           </button>
         </div>

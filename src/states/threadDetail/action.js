@@ -1,5 +1,5 @@
-import api from '../../utils/api';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import api from '../../utils/api';
 
 const ActionType = {
   RECEIVE_THREAD_DETAIL: 'RECEIVE_THREAD_DETAIL',
@@ -44,7 +44,7 @@ function downVoteThreadDetailActionCreator({ threadId, userId }) {
 }
 
 function asyncReceiveThreadDetail(threadId) {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch(showLoading());
     dispatch(clearThreadDetailActionCreator());
 
