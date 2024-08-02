@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import useInput from "../hook/useInput";
+import useInput from "../../hook/useInput";
 
-export default function LoginForm({ login }) {
+export default function FormLogin({ login }) {
   const [email, onEmailChange] = useInput("");
   const [password, onPasswordChange] = useInput("");
 
@@ -52,6 +52,6 @@ export default function LoginForm({ login }) {
   );
 }
 
-LoginForm.propTypes = {
+FormLogin.propTypes = {
   login: PropTypes.func.isRequired,
 };

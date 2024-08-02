@@ -1,7 +1,7 @@
 import { ThreadItem } from "./ThreadItem";
 import PropTypes from "prop-types";
 
-const ThreadList = ({ threads, addThread, upVote, downVote, categories, onClickCategory, params, authUser }) => {
+const ThreadList = ({ threads, upVote, downVote, categories, onClickCategory, params, authUser }) => {
   console.log("🚀 ~ ThreadList ~ threads:", threads);
   return (
     <>

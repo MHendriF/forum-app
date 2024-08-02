@@ -3,11 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { asyncPopulateUsersAndThreads } from "../states/shared/action";
 import { asyncAddThread, asyncUpVoteThread, asyncDownVoteThread } from "../states/threads/action";
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import FloatingButton from "../components/FloatingButton";
+import Modal from "../components/Modal";
+import FormThread from "../components/form/FormThread";
 
 const HomePage = () => {
   const { threads = [], users = [], authUser } = useSelector((states) => states);
   const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads());
@@ -15,6 +19,7 @@ const HomePage = () => {
 
   const onAddThread = ({ title, body, category }) => {
     dispatch(asyncAddThread({ title, body, category }));
+    closeModal();
   };
 
   const onUpVote = (threadId) => {
@@ -48,12 +53,18 @@ const HomePage = () => {
   const filteredThreads = threadList.filter((thread) => thread?.category.includes(params));
   console.log("🚀 ~ HomePage ~ filteredThreads:", filteredThreads);
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <div className="container mx-auto pt-10 w-full  max-w-3xl bg-white">
+    <div className="container mx-auto pt-10 w-full max-w-3xl bg-white">
+      <FloatingButton onClick={openModal} />
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <FormThread addThread={onAddThread} />
+      </Modal>
       <ThreadList
         authUser={authUser}
         threads={params ? filteredThreads : threadList}
-        addThread={onAddThread}
         upVote={onUpVote}
         downVote={onDownVote}
         categories={categoriesList}

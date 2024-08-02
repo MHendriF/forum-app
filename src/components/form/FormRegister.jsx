@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import useInput from "../hook/useInput";
+import useInput from "../../hook/useInput";
 
-export default function RegisterForm({ register }) {
+export default function FormRegister({ register }) {
   const [name, onNameChange] = useInput("");
   const [email, onEmailChange] = useInput("");
   const [password, onPasswordChange] = useInput("");
@@ -65,6 +65,6 @@ export default function RegisterForm({ register }) {
   );
 }
 
-RegisterForm.propTypes = {
+FormRegister.propTypes = {
   register: PropTypes.func.isRequired,
 };
