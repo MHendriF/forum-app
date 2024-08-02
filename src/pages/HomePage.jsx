@@ -40,7 +40,7 @@ export default function HomePage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.get("category");
-  const categories = threads.map((thread) => thread?.category);
+  const categories = [...new Set(threads.map((thread) => thread?.category))];
   const categoriesList = [...new Set(categories)];
 
   const onClickCategory = (category) => {
