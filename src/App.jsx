@@ -47,8 +47,8 @@ const App = () => {
 
   return (
     <>
-      <Loading />
       <header>
+        <Loading />
         <Navbar authUser={authUser} signOut={onSignOut} />
       </header>
       <main>
