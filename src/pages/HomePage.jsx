@@ -9,7 +9,7 @@ import Modal from "../components/Modal";
 import FormThread from "../components/form/FormThread";
 import CategoryCard from "../components/CategoryCard";
 
-const HomePage = () => {
+export default function HomePage() {
   const { threads = [], users = [], authUser } = useSelector((states) => states);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,7 +67,7 @@ const HomePage = () => {
       </Modal>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mx-4">
         <div className="md:col-span-1">
-          <h2 className="text-lg font-semibold mb-4">Categories</h2>
+          <h1 className="text-lg font-semibold mb-4">Categories</h1>
           <div className="space-y-2">
             {categories.map((category, index) => (
               <CategoryCard
@@ -80,7 +80,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="md:col-span-3">
-          <h2 className="text-lg font-semibold mb-4">Threads</h2>
+          <h1 className="text-lg font-semibold mb-4">Threads</h1>
           <ThreadList
             authUser={authUser}
             threads={params ? filteredThreads : threadList}
@@ -94,6 +94,4 @@ const HomePage = () => {
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}

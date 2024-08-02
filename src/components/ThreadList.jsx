@@ -1,7 +1,7 @@
 import { ThreadItem } from "./ThreadItem";
 import PropTypes from "prop-types";
 
-const ThreadList = ({ threads, upVote, downVote, categories, authUser }) => {
+export default function ThreadList({ threads, upVote, downVote, categories, authUser }) {
   console.log("🚀 ~ ThreadList ~ categories:", categories);
   return (
     <>
@@ -10,7 +10,7 @@ const ThreadList = ({ threads, upVote, downVote, categories, authUser }) => {
       ))}
     </>
   );
-};
+}
 
 ThreadList.propTypes = {
   threads: PropTypes.array,
@@ -22,5 +22,3 @@ ThreadList.propTypes = {
   params: PropTypes.string,
   authUser: PropTypes.object,
 };
-
-export default ThreadList;

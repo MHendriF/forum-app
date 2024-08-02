@@ -11,3 +11,7 @@ export default function FloatingButton({ onClick }) {
     </button>
   );
 }
+
+FloatingButton.propTypes = {
+  onClick: PropTypes.func,
+};

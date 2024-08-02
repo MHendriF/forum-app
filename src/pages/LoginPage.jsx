@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { asyncSetAuthUser } from "../states/authUser/action";
 import FormLogin from "../components/form/FormLogin";
 
-const LoginPage = () => {
+export default function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -14,6 +14,4 @@ const LoginPage = () => {
   };
 
   return <FormLogin login={onLogin} />;
-};
-
-export default LoginPage;
+}

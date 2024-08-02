@@ -7,3 +7,8 @@ export default function Label({ htmlFor, children }) {
     </label>
   );
 }
+
+Label.propTypes = {
+  htmlFor: PropTypes.string,
+  children: PropTypes.node,
+};

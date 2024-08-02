@@ -10,3 +10,9 @@ export default function Button({ children, text, type = "submit" }) {
     </button>
   );
 }
+
+Button.propTypes = {
+  children: PropTypes.node,
+  text: PropTypes.string,
+  type: PropTypes.string,
+};

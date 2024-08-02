@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { asyncRegisterUser } from "../states/users/action";
 
-const RegisterPage = () => {
+export default function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -13,6 +13,4 @@ const RegisterPage = () => {
   };
 
   return <FormRegister register={onRegister} />;
-};
-
-export default RegisterPage;
+}

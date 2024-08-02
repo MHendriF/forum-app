@@ -22,7 +22,7 @@ export default function FormThread({ addThread }) {
       <InputForm label="Title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
       <InputForm label="Category" name="category" value={category} onChange={(e) => setCategory(e.target.value)} />
       <TextareaForm label="Content" name="content" value={body} onChange={(e) => setBody(e.target.value)} />
-      <Button text="Add Thread" type="submit" />
+      <Button text="Create New Thread" type="submit" />
     </form>
   );
 }

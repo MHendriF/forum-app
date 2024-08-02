@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Textarea = ({ name, value, onChange }) => {
+export default function Textarea({ name, value, onChange }) {
   return (
     <textarea
       id={name}
@@ -11,6 +11,10 @@ const Textarea = ({ name, value, onChange }) => {
       onChange={onChange}
     />
   );
-};
+}
 
-export default Textarea;
+Textarea.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};

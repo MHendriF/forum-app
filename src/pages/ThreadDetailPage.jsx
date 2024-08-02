@@ -10,7 +10,7 @@ import {
 import { asyncAddComment, asyncUpVoteComment, asyncDownVoteComment } from "../states/comments/action";
 import ThreadComment from "../components/ThreadComment";
 
-const ThreadDetailPage = () => {
+export default function ThreadDetailPage() {
   const { id } = useParams();
   const { threadDetail = null, authUser } = useSelector((states) => states);
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const ThreadDetailPage = () => {
   //console.log("🚀 ~ ThreadDetailPage ~ threadDetail:", threadDetail);
   return (
     <div className="container mx-auto pt-10 w-full max-w-3xl bg-white flex flex-col gap-4 ">
-      <div className=" mx-4">
+      <div className="mx-4">
         <ThreadDetail {...threadDetail} authUser={authUser} upVote={onUpVote} downVote={onDownVote} />
         <ThreadComment
           {...threadDetail}
@@ -57,6 +57,4 @@ const ThreadDetailPage = () => {
       </div>
     </div>
   );
-};
-
-export default ThreadDetailPage;
+}

@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaHome, FaTrophy, FaBars, FaTimes, FaUser } from "react-icons/fa";
@@ -6,7 +5,7 @@ import { useState } from "react";
 import NavbarLink from "./NavbarLink";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
-const Navbar = ({ authUser, signOut }) => {
+export default function Navbar({ authUser, signOut }) {
   //console.log("🚀 ~ Navbar ~ authUser:", authUser);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,9 +32,12 @@ const Navbar = ({ authUser, signOut }) => {
               <NavbarLink link="/profile" className="flex items-center">
                 <FaUser className="mr-2" /> My Profile
               </NavbarLink>
-              <NavbarLink link="/logout" className="flex items-center" onClick={signOut}>
+              <button
+                onClick={signOut}
+                className="flex items-center text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out"
+              >
                 <FaArrowRightToBracket className="mr-2" /> Logout
-              </NavbarLink>
+              </button>
             </>
           )}
         </div>
@@ -56,16 +58,17 @@ const Navbar = ({ authUser, signOut }) => {
           <NavbarLink link="/" className="block py-2">
             <FaUser className="mr-2 inline-block" /> My Profile
           </NavbarLink>
-          <NavbarLink link="/" className="block py-2">
+          <button
+            onClick={signOut}
+            className="block py-2 text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out"
+          >
             <FaArrowRightToBracket className="mr-2 inline-block" /> Logout
-          </NavbarLink>
+          </button>
         </div>
       )}
     </nav>
   );
-};
-
-export default Navbar;
+}
 
 const authUserShape = {
   name: PropTypes.string.isRequired,

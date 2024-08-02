@@ -23,6 +23,7 @@ const App = () => {
   }, [dispatch]);
 
   const onSignOut = () => {
+    console.log("🚀 ~ App ~ onSignOut ~ authUser:", authUser);
     dispatch(asyncUnsetAuthUser());
   };
 
