@@ -17,7 +17,12 @@ export default function NavbarLink({ link, className, children }) {
 }
 
 NavbarLink.propTypes = {
-  link: PropTypes.string,
+  link: PropTypes.string.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
+};
+
+NavbarLink.defaultProps = {
+  className: '',
+  children: null,
 };

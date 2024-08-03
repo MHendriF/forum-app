@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import CommentForm from './forms/CommentForm';
 import CommentItem from './CommentItem';
-import PropTypes, { object } from 'prop-types';
+import { authUserShape, commentShape } from '../utils/types';
 
 export default function ThreadComment({
   id,
@@ -10,6 +11,8 @@ export default function ThreadComment({
   comments,
   authUser,
 }) {
+  console.log('🚀 ~ comments:', comments);
+
   return (
     <div className="flex flex-col">
       <CommentForm addComment={addComment} id={id} />
@@ -27,10 +30,14 @@ export default function ThreadComment({
 }
 
 ThreadComment.propTypes = {
-  id: PropTypes.string,
-  addComment: PropTypes.func,
-  upVoteComment: PropTypes.func,
-  downVoteComment: PropTypes.func,
-  comments: PropTypes.arrayOf(object),
-  authUser: PropTypes.object,
+  id: PropTypes.string.isRequired,
+  addComment: PropTypes.func.isRequired,
+  upVoteComment: PropTypes.func.isRequired,
+  downVoteComment: PropTypes.func.isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
+  authUser: PropTypes.shape(authUserShape).isRequired,
+};
+
+ThreadComment.defaultProps = {
+  comments: [],
 };

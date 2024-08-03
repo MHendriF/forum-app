@@ -1,13 +1,13 @@
-import ThreadList from '../components/ThreadList';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { asyncPopulateUsersAndThreads } from '../states/shared/action';
+import asyncPopulateUsersAndThreads from '../states/shared/action';
 import {
   asyncAddThread,
   asyncUpVoteThread,
   asyncDownVoteThread,
 } from '../states/threads/action';
-import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import ThreadList from '../components/ThreadList';
 import FloatingButton from '../components/FloatingButton';
 import Modal from '../components/Modal';
 import ThreadForm from '../components/forms/ThreadForm';
@@ -21,6 +21,9 @@ export default function HomePage() {
   } = useSelector((states) => states);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads());
@@ -48,6 +51,7 @@ export default function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.get('category');
   const categories = [...new Set(threads.map((thread) => thread?.category))];
+  console.log('🚀 ~ HomePage ~ categories:', categories);
 
   const onClickCategory = (category) => {
     if (params === category) {
@@ -60,9 +64,6 @@ export default function HomePage() {
   const filteredThreads = threadList.filter((thread) =>
     thread?.category.includes(params),
   );
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="container mx-auto pt-10 w-full max-w-5xl bg-white">
@@ -91,8 +92,6 @@ export default function HomePage() {
             threads={params ? filteredThreads : threadList}
             upVote={onUpVote}
             downVote={onDownVote}
-            onClickCategory={onClickCategory}
-            params={params}
           />
         </div>
       </div>

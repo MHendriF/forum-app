@@ -1,10 +1,9 @@
-// src/components/Leaderboard.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
 import Avatar from './Avatar';
 
-const Leaderboard = () => {
+export default function Leaderboard() {
   const { leaderboards = [] } = useSelector((states) => states);
 
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ const Leaderboard = () => {
       <div className="grid gap-4">
         {leaderboards?.map((user, index) => (
           <div
-            key={index}
+            key={user.id}
             className="bg-white p-4 rounded-lg shadow-md flex items-center justify-between"
           >
             <div className="flex items-center">
@@ -39,6 +38,4 @@ const Leaderboard = () => {
       </div>
     </>
   );
-};
-
-export default Leaderboard;
+}

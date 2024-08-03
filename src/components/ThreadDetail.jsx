@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
-import { postedAt } from '../utils';
-import Avatar from './Avatar';
 import { FaRegCommentDots, FaDownLong, FaUpLong } from 'react-icons/fa6';
+import postedAt from '../utils';
+import Avatar from './Avatar';
+import {
+  authUserShape,
+  commentShape,
+  threadShape,
+  userShape,
+} from '../utils/types';
 
 export default function ThreadDetail({
   id,
@@ -75,16 +81,16 @@ export default function ThreadDetail({
 }
 
 ThreadDetail.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  body: PropTypes.string,
-  createdAt: PropTypes.string,
-  category: PropTypes.string,
-  owner: PropTypes.object,
-  comments: PropTypes.array,
-  upVotesBy: PropTypes.array,
-  downVotesBy: PropTypes.array,
-  upVote: PropTypes.func,
-  downVote: PropTypes.func,
-  authUser: PropTypes.object,
+  ...threadShape,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
+  upVotesBy: PropTypes.arrayOf(PropTypes.string),
+  downVotesBy: PropTypes.arrayOf(PropTypes.string),
+  upVote: PropTypes.func.isRequired,
+  downVote: PropTypes.func.isRequired,
+};
+
+ThreadDetail.defaultProps = {
+  comments: [],
+  upVotesBy: [],
+  downVotesBy: [],
 };

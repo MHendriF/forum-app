@@ -5,6 +5,6 @@ export default function Avatar({ src, alt }) {
 }
 
 Avatar.propTypes = {
-  src: PropTypes.string,
-  alt: PropTypes.string,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
 };

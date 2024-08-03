@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { postedAt } from '../utils';
-import Avatar from './Avatar';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { FaDownLong, FaUpLong } from 'react-icons/fa6';
+import postedAt from '../utils';
+import Avatar from './Avatar';
+import { threadShape } from '../utils/types';
 
-export const ThreadItem = ({
+export default function ThreadItem({
   id,
   title,
   body,
@@ -18,7 +19,7 @@ export const ThreadItem = ({
   downVote,
   totalComments,
   authUser,
-}) => {
+}) {
   const onUpVoteClick = () => {
     upVote(id);
   };
@@ -80,19 +81,12 @@ export const ThreadItem = ({
       </div>
     </div>
   );
-};
+}
 
 ThreadItem.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  body: PropTypes.string,
-  category: PropTypes.string,
-  createdAt: PropTypes.string,
-  user: PropTypes.object,
-  upVotesBy: PropTypes.array,
-  downVotesBy: PropTypes.array,
-  upVote: PropTypes.func,
-  downVote: PropTypes.func,
-  totalComments: PropTypes.number,
-  authUser: PropTypes.object,
+  ...threadShape,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  upVote: PropTypes.func.isRequired,
+  downVote: PropTypes.func.isRequired,
 };

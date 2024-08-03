@@ -1,7 +1,8 @@
-import Avatar from './Avatar';
-import { postedAt } from '../utils';
-import { FaDownLong, FaUpLong } from 'react-icons/fa6';
 import PropTypes from 'prop-types';
+import { FaDownLong, FaUpLong } from 'react-icons/fa6';
+import Avatar from './Avatar';
+import postedAt from '../utils';
+import { authUserShape, commentShape } from '../utils/types';
 
 export default function CommentItem({
   id,
@@ -68,13 +69,6 @@ export default function CommentItem({
 }
 
 CommentItem.propTypes = {
-  id: PropTypes.string,
-  owner: PropTypes.object,
-  createdAt: PropTypes.string,
-  content: PropTypes.string,
-  upVote: PropTypes.func,
-  downVote: PropTypes.func,
-  upVotesBy: PropTypes.array,
-  downVotesBy: PropTypes.array,
-  authUser: PropTypes.object,
+  ...commentShape,
+  authUser: PropTypes.shape(authUserShape).isRequired,
 };

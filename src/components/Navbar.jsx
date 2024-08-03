@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaHome, FaTrophy, FaBars, FaTimes, FaUser } from 'react-icons/fa';
+import { FaArrowRightToBracket } from 'react-icons/fa6';
 import { useState } from 'react';
 import NavbarLink from './NavbarLink';
-import { FaArrowRightToBracket } from 'react-icons/fa6';
+import { authUserShape } from '../utils/types';
 
 export default function Navbar({ authUser, signOut }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,27 +25,33 @@ export default function Navbar({ authUser, signOut }) {
         </div>
         <div className="hidden md:flex space-x-8">
           <NavbarLink link="/" className="flex items-center">
-            <FaHome className="mr-2" /> Home
+            <FaHome className="mr-2" />
+            Home
           </NavbarLink>
           <NavbarLink link="/leaderboard" className="flex items-center">
-            <FaTrophy className="mr-2" /> Leaderboard
+            <FaTrophy className="mr-2" />
+            Leaderboard
           </NavbarLink>
           {authUser && (
             <>
               <NavbarLink link="/profile" className="flex items-center">
-                <FaUser className="mr-2" /> My Profile
+                <FaUser className="mr-2" />
+                My Profile
               </NavbarLink>
               <button
+                type="button"
                 onClick={signOut}
                 className="flex items-center text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out"
               >
-                <FaArrowRightToBracket className="mr-2" /> Logout
+                <FaArrowRightToBracket className="mr-2" />
+                Logout
               </button>
             </>
           )}
         </div>
         <div className="md:hidden">
           <button
+            type="button"
             onClick={toggleMenu}
             className="text-white focus:outline-none"
           >
@@ -59,29 +66,30 @@ export default function Navbar({ authUser, signOut }) {
       {isOpen && (
         <div className="md:hidden mt-4">
           <NavbarLink link="/" className="block py-2">
-            <FaHome className="mr-2 inline-block" /> Home
+            <FaHome className="mr-2 inline-block" />
+            Home
           </NavbarLink>
           <NavbarLink link="/leaderboard" className="block py-2">
-            <FaTrophy className="mr-2 inline-block" /> Leaderboard
+            <FaTrophy className="mr-2 inline-block" />
+            Leaderboard
           </NavbarLink>
           <NavbarLink link="/" className="block py-2">
-            <FaUser className="mr-2 inline-block" /> My Profile
+            <FaUser className="mr-2 inline-block" />
+            My Profile
           </NavbarLink>
           <button
+            type="button"
             onClick={signOut}
             className="block py-2 text-white text-md font-bold hover:text-slate-400 transition duration-300 ease-in-out"
           >
-            <FaArrowRightToBracket className="mr-2 inline-block" /> Logout
+            <FaArrowRightToBracket className="mr-2 inline-block" />
+            Logout
           </button>
         </div>
       )}
     </nav>
   );
 }
-
-const authUserShape = {
-  name: PropTypes.string.isRequired,
-};
 
 Navbar.propTypes = {
   authUser: PropTypes.shape(authUserShape).isRequired,

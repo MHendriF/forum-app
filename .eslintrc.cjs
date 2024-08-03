@@ -25,5 +25,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'no-alert': 'off',
+    'linebreak-style': 'off',
   },
 };

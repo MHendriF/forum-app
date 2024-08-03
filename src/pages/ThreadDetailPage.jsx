@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import ThreadDetail from '../components/ThreadDetail';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {
@@ -13,6 +12,7 @@ import {
   asyncDownVoteComment,
 } from '../states/comments/action';
 import ThreadComment from '../components/ThreadComment';
+import ThreadDetail from '../components/ThreadDetail';
 
 export default function ThreadDetailPage() {
   const { id } = useParams();

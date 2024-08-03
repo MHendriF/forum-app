@@ -44,7 +44,7 @@ export default function LoginForm({ onLogin }) {
           <Button text="Login" type="submit" />
         </form>
         <p className="text-center mt-4">
-          Don&apos;t have an account?{' '}
+          Don&apos;t have an account?
           <a href="/register" className="text-blue-500">
             Register
           </a>

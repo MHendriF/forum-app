@@ -20,7 +20,7 @@ export default function Textarea({ name, register, errors }) {
 }
 
 Textarea.propTypes = {
-  name: PropTypes.string,
-  register: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
   errors: PropTypes.object,
 };

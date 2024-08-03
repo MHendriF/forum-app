@@ -20,11 +20,14 @@ export default function Input({ type, placeholder, name, register, errors }) {
 }
 
 Input.propTypes = {
-  type: PropTypes.string,
+  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  register: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
   errors: PropTypes.object,
+};
+
+Input.defaultProps = {
+  placeholder: null,
+  errors: {},
 };

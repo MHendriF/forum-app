@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import Button from '../Button';
-import TextareaForm from '../inputs/TextareaForm';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Button from '../Button';
+import TextareaForm from '../inputs/TextareaForm';
 import { CommentFormValidation } from '../../utils/validation';
 
 export default function CommentForm({ addComment, id }) {
@@ -34,6 +34,6 @@ export default function CommentForm({ addComment, id }) {
 }
 
 CommentForm.propTypes = {
-  id: PropTypes.string,
-  addComment: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  addComment: PropTypes.func.isRequired,
 };

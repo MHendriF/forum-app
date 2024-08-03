@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import Label from './Label';
 import Input from './Input';
-import PropTypes from 'prop-types';
 
 export default function InputForm({
   label,
@@ -25,12 +25,14 @@ export default function InputForm({
 }
 
 InputForm.propTypes = {
-  label: PropTypes.string,
-  name: PropTypes.string,
-  type: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  register: PropTypes.func,
+  register: PropTypes.func.isRequired,
   errors: PropTypes.object,
+};
+
+InputForm.defaultProps = {
+  placeholder: null,
 };
