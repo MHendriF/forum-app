@@ -22,5 +22,8 @@ export default function Textarea({ name, register, errors }) {
 Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
-  errors: PropTypes.object,
+  errors: PropTypes.shape({
+    message: PropTypes.string,
+    type: PropTypes.string,
+  }),
 };

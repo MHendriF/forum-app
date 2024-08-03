@@ -11,8 +11,6 @@ export default function ThreadComment({
   comments,
   authUser,
 }) {
-  console.log('🚀 ~ comments:', comments);
-
   return (
     <div className="flex flex-col">
       <CommentForm addComment={addComment} id={id} />
@@ -36,8 +34,4 @@ ThreadComment.propTypes = {
   downVoteComment: PropTypes.func.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
   authUser: PropTypes.shape(authUserShape).isRequired,
-};
-
-ThreadComment.defaultProps = {
-  comments: [],
 };

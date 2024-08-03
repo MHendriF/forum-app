@@ -30,9 +30,8 @@ InputForm.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   register: PropTypes.func.isRequired,
-  errors: PropTypes.object,
-};
-
-InputForm.defaultProps = {
-  placeholder: null,
+  errors: PropTypes.shape({
+    message: PropTypes.string,
+    type: PropTypes.string,
+  }),
 };

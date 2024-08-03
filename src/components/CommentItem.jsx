@@ -15,6 +15,7 @@ export default function CommentItem({
   downVotesBy,
   authUser,
 }) {
+  console.log('🚀 ~ owner:', owner);
   const onUpVoteClick = () => {
     upVote(id);
   };

@@ -26,5 +26,8 @@ module.exports = {
     ],
     'no-alert': 'off',
     'linebreak-style': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'object-curly-newline': 'off',
+    'react/require-default-props': 'off',
   },
 };

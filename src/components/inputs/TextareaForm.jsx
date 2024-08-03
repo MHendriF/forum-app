@@ -15,5 +15,8 @@ TextareaForm.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
-  errors: PropTypes.object,
+  errors: PropTypes.shape({
+    message: PropTypes.string,
+    type: PropTypes.string,
+  }),
 };

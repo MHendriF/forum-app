@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-export default function NavbarLink({ link, className, children }) {
+export default function NavbarLink({ link, className = '', children = null }) {
   return (
     <Link
       to={link}
@@ -20,9 +20,4 @@ NavbarLink.propTypes = {
   link: PropTypes.string.isRequired,
   className: PropTypes.string,
   children: PropTypes.node,
-};
-
-NavbarLink.defaultProps = {
-  className: '',
-  children: null,
 };

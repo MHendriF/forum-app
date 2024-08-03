@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default function Input({ type, placeholder, name, register, errors }) {
+  console.log('🚀 ~ Input ~ errors:', errors);
   return (
     <>
       <input
@@ -24,10 +25,8 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   register: PropTypes.func.isRequired,
-  errors: PropTypes.object,
-};
-
-Input.defaultProps = {
-  placeholder: null,
-  errors: {},
+  errors: PropTypes.shape({
+    message: PropTypes.string,
+    type: PropTypes.string,
+  }),
 };

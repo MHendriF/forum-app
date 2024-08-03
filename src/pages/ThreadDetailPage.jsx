@@ -57,7 +57,8 @@ export default function ThreadDetailPage() {
           downVote={onDownVote}
         />
         <ThreadComment
-          {...threadDetail}
+          id={threadDetail.id}
+          comments={threadDetail.comments}
           authUser={authUser}
           addComment={onAddComment}
           upVoteComment={onUpVoteComment}

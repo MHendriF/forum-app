@@ -19,9 +19,10 @@ export const threadShape = {
   body: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  ownerId: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   totalComments: PropTypes.number.isRequired,
-  authUser: PropTypes.shape(authUserShape).isRequired,
-  user: PropTypes.shape(userShape).isRequired,
 };
 
 export const commentShape = {
@@ -31,4 +32,17 @@ export const commentShape = {
   owner: PropTypes.shape(userShape).isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export const detailThreadShape = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  totalComments: PropTypes.number.isRequired,
+  owner: PropTypes.shape(userShape).isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
 };
