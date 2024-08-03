@@ -60,8 +60,8 @@ export default function HomePage() {
     }
   };
 
-  const filteredThreads = threadList.filter((thread) =>
-    thread?.category.includes(params),
+  const filteredThreads = threadList.filter(
+    (thread) => thread.category === params,
   );
 
   return (
@@ -74,9 +74,9 @@ export default function HomePage() {
         <div className="md:col-span-1">
           <h1 className="text-lg font-semibold mb-4">Categories</h1>
           <div className="space-y-2">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <CategoryCard
-                key={index}
+                key={category}
                 category={category}
                 onClickCategory={onClickCategory}
                 isActive={category === params}

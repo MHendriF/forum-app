@@ -9,7 +9,8 @@ export default function Modal({ isOpen, onClose, children }) {
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition-colors duration-300 w-8 h-8 flex items-center justify-center">
+          className="absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition-colors duration-300 w-8 h-8 flex items-center justify-center"
+        >
           &times;
         </button>
         {children}

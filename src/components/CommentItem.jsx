@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { FaDownLong, FaUpLong } from 'react-icons/fa6';
+import parse from 'html-react-parser';
 import Avatar from './Avatar';
 import postedAt from '../utils';
 import { authUserShape, commentShape } from '../utils/types';
@@ -37,12 +38,7 @@ export default function CommentItem({
       </div>
       <div className="flex items-start">
         <div className="flex-1">
-          <p
-            className="text-gray-700 mt-2"
-            dangerouslySetInnerHTML={{
-              __html: content,
-            }}
-          />
+          <p className="text-gray-700 mt-2">{content && parse(content)}</p>
           <div className="mt-4 flex items-center">
             <div className="flex items-center">
               <div className="flex items-center justify-center mr-4">

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { FaRegCommentDots, FaDownLong, FaUpLong } from 'react-icons/fa6';
+import parse from 'html-react-parser';
 import postedAt from '../utils';
 import Avatar from './Avatar';
 import { detailThreadShape } from '../utils/types';
@@ -35,19 +36,16 @@ export default function ThreadDetail({
         <Avatar src={owner?.avatar} alt={owner?.name} />
         <div className="flex-1">
           <p className="text-md text-gray-800 font-bold">{owner?.name}</p>
-          <p className="text-sm text-slate-500">{postedAt(createdAt)}</p>
+          <p className="text-sm text-slate-500">
+            {createdAt && postedAt(createdAt)}
+          </p>
         </div>
         <p className="text-sm text-gray-500">#{category}</p>
       </div>
       <div className="flex items-start">
         <div className="flex-1">
           <h2 className="text-lg font-bold mt-2">{title}</h2>
-          <p
-            className="text-gray-700 mt-2"
-            dangerouslySetInnerHTML={{
-              __html: body,
-            }}
-          />
+          <p className="text-gray-700 mt-2">{body && parse(body)}</p>
           <div className="mt-4 flex items-center justify-between">
             <div className="flex items-center">
               <div className="flex items-center justify-center mr-4">

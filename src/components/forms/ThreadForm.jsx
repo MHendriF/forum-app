@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ThreadFormValidation } from '../../utils/validation';
-import PropTypes from 'prop-types';
 import Button from '../Button';
 import InputForm from '../inputs/InputForm';
 import TextareaForm from '../inputs/TextareaForm';

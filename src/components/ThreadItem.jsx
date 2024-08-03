@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import parse from 'html-react-parser';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { FaDownLong, FaUpLong } from 'react-icons/fa6';
 import postedAt from '../utils';
@@ -47,12 +48,9 @@ export default function ThreadItem({
             <Link to={`/thread/${id}`} className="block mt-2">
               <h2 className="text-lg font-bold">{title}</h2>
             </Link>
-            <p
-              className="text-gray-700 mt-2 line-clamp-3"
-              dangerouslySetInnerHTML={{
-                __html: body,
-              }}
-            />
+            <p className="text-gray-700 mt-2 line-clamp-3">
+              {body && parse(body)}
+            </p>
             <div className="mt-4 flex items-center">
               <div className="flex items-center">
                 <div className="flex items-center justify-center mr-4">

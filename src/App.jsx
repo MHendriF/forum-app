@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
-import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import LoginPage from './pages/LoginPage';
@@ -13,7 +13,7 @@ import Loading from './components/Loading';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
-const App = () => {
+export default function App() {
   const { authUser = null, isPreload = false } = useSelector(
     (states) => states,
   );
@@ -63,6 +63,4 @@ const App = () => {
       </main>
     </>
   );
-};
-
-export default App;
+}
