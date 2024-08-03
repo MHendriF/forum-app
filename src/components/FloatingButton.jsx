@@ -6,7 +6,9 @@ export default function FloatingButton({ onClick }) {
     <button
       onClick={onClick}
       type="button"
-      className="fixed bottom-4 right-4 p-4 bg-slate-500 text-white rounded-full shadow-lg hover:bg-slate-700 transition-colors duration-300 w-14 h-14 flex items-center justify-center">
+      className="fixed bottom-4 right-4 p-4 bg-slate-500 text-white rounded-full shadow-lg hover:bg-slate-700 transition-colors duration-300 w-14 h-14 flex items-center justify-center"
+      aria-label="Add"
+    >
       <FaPlus className="w-4 h-4" />
     </button>
   );
