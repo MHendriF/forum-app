@@ -19,15 +19,16 @@ module.exports = {
         devDependencies: ['vite.config.js', '**/*.test.js', '**/*.spec.js'],
       },
     ],
-    'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
     'no-alert': 'off',
     'linebreak-style': 'off',
-    'react/jsx-props-no-spreading': 'off',
     'object-curly-newline': 'off',
     'react/require-default-props': 'off',
+    'react/jsx-no-target-blank': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
 };

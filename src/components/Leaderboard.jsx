@@ -15,14 +15,13 @@ export default function Leaderboard() {
   if (!leaderboards) {
     return null;
   }
-
   return (
     <>
       <h1 className="text-lg font-semibold text-center mb-4">Leaderboard</h1>
       <div className="grid gap-4">
         {leaderboards?.map((user, index) => (
           <div
-            key={user.id}
+            key={user.user.id}
             className="bg-white p-4 rounded-lg shadow-md flex items-center justify-between"
           >
             <div className="flex items-center">

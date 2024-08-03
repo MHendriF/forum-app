@@ -34,6 +34,6 @@ export default function CommentForm({ addComment, id }) {
 }
 
 CommentForm.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   addComment: PropTypes.func.isRequired,
 };

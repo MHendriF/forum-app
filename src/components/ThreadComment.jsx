@@ -28,10 +28,10 @@ export default function ThreadComment({
 }
 
 ThreadComment.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   addComment: PropTypes.func.isRequired,
   upVoteComment: PropTypes.func.isRequired,
   downVoteComment: PropTypes.func.isRequired,
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
-  authUser: PropTypes.shape(authUserShape).isRequired,
+  authUser: PropTypes.shape(authUserShape),
 };

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 export default function Input({ type, placeholder, name, register, errors }) {
-  console.log('🚀 ~ Input ~ errors:', errors);
   return (
     <>
       <input

@@ -80,9 +80,3 @@ ThreadDetail.propTypes = {
   upVote: PropTypes.func.isRequired,
   downVote: PropTypes.func.isRequired,
 };
-
-// ThreadDetail.defaultProps = {
-//   comments: [],
-//   upVotesBy: [],
-//   downVotesBy: [],
-// };
