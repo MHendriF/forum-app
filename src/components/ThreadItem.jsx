@@ -45,7 +45,10 @@ export default function ThreadItem({
         </div>
         <div className="flex items-start">
           <div className="flex-1">
-            <Link to={`/thread/${id}`} className="block mt-2">
+            <Link
+              to={`/thread/${id}`}
+              className="block mt-2 hover:text-blue-700 transition duration-300"
+            >
               <h2 className="text-lg font-bold">{title}</h2>
             </Link>
             <p className="text-gray-700 mt-2 line-clamp-3">
