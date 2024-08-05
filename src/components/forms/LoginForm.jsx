@@ -46,7 +46,7 @@ export default function LoginForm({ onLogin }) {
         <p className="text-center mt-4">
           Don&apos;t have an account?
           <a href="/register" className="text-blue-500">
-            Register
+            &nbsp;Register
           </a>
         </p>
       </div>

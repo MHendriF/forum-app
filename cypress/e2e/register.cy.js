@@ -1,8 +1,9 @@
 /**
  * - Register spec
- * - should display register page correctly
- * - should display alert when email has been registered
- * - should display login page when name, email, and password are correct
+ *  - should display register page correctly
+ *  - should display error validation when input fields are invalid
+ *  - should display alert when email has been registered
+ *  - should display login page when name, email, and password are correct
  */
 
 describe('Register spec', () => {
@@ -16,6 +17,16 @@ describe('Register spec', () => {
     cy.get('input[name="email"]').should('be.visible');
     cy.get('input[name="password"]').should('be.visible');
     cy.get('button[type="submit"]').should('be.visible');
+  });
+
+  it('should display error validation when input fields are invalid', () => {
+    // click submit button
+    cy.get('button[type="submit"]').click();
+
+    /// verify error validation
+    cy.contains('Name is required').should('be.visible');
+    cy.contains('Invalid email address').should('be.visible');
+    cy.contains('Password must be at least 6 characters').should('be.visible');
   });
 
   it('should display alert when email has been registered', () => {

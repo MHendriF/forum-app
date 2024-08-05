@@ -54,7 +54,7 @@ export default function RegisterForm({ onRegister }) {
         <p className="text-center mt-4">
           Already have an account?
           <a href="/" className="text-blue-500">
-            Login
+            &nbsp;Login
           </a>
         </p>
       </div>

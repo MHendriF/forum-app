@@ -1,8 +1,7 @@
 /**
  * - Login spec
  *   - should display login page correctly
- *   - should display alert when email is empty
- *   - should display alert when password is empty
+ *   - should display error validation when input fields are invalid
  *   - should display alert when email or password are wrong
  *   - should display homepage when email and password are correct
  */
@@ -19,27 +18,13 @@ describe('Login spec', () => {
     cy.get('button[type="submit"]').should('be.visible');
   });
 
-  it('should display alert when email is empty', () => {
+  it('should display error validation when input fields are invalid', () => {
     // click submit button
     cy.get('button[type="submit"]').click();
 
-    /// verify alert message content
-    cy.on('window:alert', (str) => {
-      expect(str).to.equal('"email" is not allowed to be empty');
-    });
-  });
-
-  it('should display alert when password is empty', () => {
-    // fill email
-    cy.get('input[name="email"]').type('john@mail.com');
-
-    // click submit button
-    cy.get('button[type="submit"]').click();
-
-    // verify alert message content
-    cy.on('window:alert', (str) => {
-      expect(str).to.equal('"password" is not allowed to be empty');
-    });
+    /// verify error validation
+    cy.contains('Invalid email address').should('be.visible');
+    cy.contains('Password must be at least 6 characters').should('be.visible');
   });
 
   it('should display alert when email or password are wrong', () => {
