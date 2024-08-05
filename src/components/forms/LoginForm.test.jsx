@@ -34,26 +34,26 @@ describe('LoginForm Component', () => {
   });
 
   it('should handle email typing correctly', async () => {
-    // arrange
+    // Arrange
     render(<LoginForm onLogin={() => {}} />, { wrapper: MemoryRouter });
     const emailInput = await screen.getByLabelText('Email');
 
-    // action
+    // Action
     await userEvent.type(emailInput, 'johndoe@mail.com');
 
-    // assert
+    // Assert
     expect(emailInput).toHaveValue('johndoe@mail.com');
   });
 
   it('should handle password typing correctly', async () => {
-    // arrange
+    // Arrange
     render(<LoginForm onLogin={() => {}} />, { wrapper: MemoryRouter });
     const passwordInput = await screen.getByLabelText('Password');
 
-    // action
+    // Action
     await userEvent.type(passwordInput, '123456');
 
-    // assert
+    // Assert
     expect(passwordInput).toHaveValue('123456');
   });
 
@@ -61,13 +61,13 @@ describe('LoginForm Component', () => {
     // spy
     const spy = vi.spyOn(api, 'login');
 
-    // arrange
+    // Arrange
     render(<LoginForm onLogin={api.login} />, { wrapper: MemoryRouter });
     const emailInput = await screen.getByLabelText('Email');
     const passwordInput = await screen.getByLabelText('Password');
     const loginButton = await screen.getByRole('button', { name: 'Login' });
 
-    // action
+    // Action
     await userEvent.type(emailInput, 'johndoe@mail.com');
     await userEvent.type(passwordInput, '123456');
     await userEvent.click(loginButton);

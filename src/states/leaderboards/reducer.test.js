@@ -12,19 +12,19 @@ import { fakeLeaderboardsResponse } from '../../utils/fakeResponse';
 
 describe('leaderboardsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = leaderboardsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the leaderboards when given by RECEIVE_LEADERBOARDS action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = {
       type: ActionType.RECEIVE_LEADERBOARDS,
@@ -33,7 +33,7 @@ describe('leaderboardsReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = leaderboardsReducer(initialState, action);
 
     expect(nextState).toEqual(action.payload.leaderboards);

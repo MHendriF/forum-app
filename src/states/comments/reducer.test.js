@@ -20,19 +20,19 @@ import {
 
 describe('commentsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = commentsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the comments when given by RECEIVE_COMMENTS action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = {
       action: ActionType.RECEIVE_COMMENTS,
@@ -41,14 +41,14 @@ describe('commentsReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = commentsReducer(initialState, action);
 
     expect(nextState).toEqual(action.payload.comments);
   });
 
   it('should return the comments with the new comment when given by ADD_COMMENT action', () => {
-    // arrange
+    // Arrange
     const initialState = [fakeCommentResponse];
     const action = {
       type: ActionType.ADD_COMMENT,
@@ -57,25 +57,25 @@ describe('commentsReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = commentsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual([action.payload.comment, ...initialState]);
   });
 
   it('should return the comments with the new comment when given by UPVOTE_COMMENT action', () => {
-    // arrange
+    // Arrange
     const initialState = [fakeCommentResponse];
     const action = {
       type: ActionType.UPVOTE_COMMENT,
       payload: fakeUpVoteCommentResponse,
     };
 
-    // action
+    // Action
     const nextState = commentsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual([
       {
         ...initialState[0],
@@ -86,17 +86,17 @@ describe('commentsReducer function', () => {
   });
 
   it('should return the comments with the new comment when given by DOWNVOTE_COMMENT action', () => {
-    // arrange
+    // Arrange
     const initialState = [fakeCommentResponse];
     const action = {
       type: ActionType.DOWNVOTE_COMMENT,
       payload: fakeDownVoteCommentResponse,
     };
 
-    // action
+    // Action
     const nextState = commentsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual([
       {
         ...initialState[0],

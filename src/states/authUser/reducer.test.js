@@ -13,19 +13,19 @@ import { fakeAuthUserResponse } from '../../utils/fakeResponse';
 
 describe('authUserReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = null;
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = authUserReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the authUser when given by SET_AUTH_USER action', () => {
-    // arrange
+    // Arrange
     const initialState = null;
     const action = {
       type: ActionType.SET_AUTH_USER,
@@ -34,22 +34,22 @@ describe('authUserReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = authUserReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(action.payload.authUser);
   });
 
   it('should return null when given by UNSET_AUTH_USER action', () => {
-    // arrange
+    // Arrange
     const initialState = fakeAuthUserResponse;
     const action = { type: ActionType.UNSET_AUTH_USER };
 
-    // action
+    // Action
     const nextState = authUserReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(null);
   });
 });

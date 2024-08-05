@@ -29,17 +29,17 @@ describe('asyncReceiveLeaderboards thunk', () => {
   });
 
   it('should dispatch action correctly when data fetching success', async () => {
-    // arrange
+    // Arrange
     // stub implementation
     api.getLeaderboards = () => Promise.resolve(fakeLeaderboardsResponse);
 
     // mock dispatch
     const dispatch = vi.fn();
 
-    // action
+    // Action
     await asyncReceiveLeaderboards()(dispatch);
 
-    // assert
+    // Assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(dispatch).toHaveBeenCalledWith(
       receiveLeaderboardsActionCreator(fakeLeaderboardsResponse),
@@ -48,7 +48,7 @@ describe('asyncReceiveLeaderboards thunk', () => {
   });
 
   it('should dispatch action correctly when data fetching failed', async () => {
-    // arrange
+    // Arrange
     // stub implementation
     api.getLeaderboards = () => Promise.reject(fakeErrorResponse);
 
@@ -60,10 +60,10 @@ describe('asyncReceiveLeaderboards thunk', () => {
       window.alert = vi.fn();
     }
 
-    // action
+    // Action
     await asyncReceiveLeaderboards()(dispatch);
 
-    // assert
+    // Assert
     if (typeof window !== 'undefined') {
       expect(dispatch).toHaveBeenCalledWith(showLoading());
       expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);

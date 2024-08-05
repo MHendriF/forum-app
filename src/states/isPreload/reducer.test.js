@@ -11,19 +11,19 @@ import { ActionType } from './action';
 
 describe('isPreloadReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = true;
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = isPreloadReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the isPreload when given by SET_IS_PRELOAD action', () => {
-    // arrange
+    // Arrange
     const initialState = true;
     const action = {
       type: ActionType.SET_IS_PRELOAD,
@@ -32,10 +32,10 @@ describe('isPreloadReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = isPreloadReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(action.payload.isPreLoad);
   });
 });

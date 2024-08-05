@@ -29,17 +29,17 @@ describe('asyncPreloadProcess thunk', async () => {
   });
 
   it('should dispatch action correctly when data fetching success', async () => {
-    // arrange
+    // Arrange
     // stub implementation
     api.getOwnProfile = () => Promise.resolve(fakeAuthUserResponse);
 
     // mock dispatch
     const dispatch = vi.fn();
 
-    // action
+    // Action
     await asyncPreloadProcess()(dispatch);
 
-    // assert
+    // Assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(dispatch).toHaveBeenCalledWith(
       setAuthUserActionCreator(fakeAuthUserResponse),
@@ -49,17 +49,17 @@ describe('asyncPreloadProcess thunk', async () => {
   });
 
   it('should dispatch action correctly when data fetching failed', async () => {
-    // arrange
+    // Arrange
     // stub implementation
     api.getOwnProfile = () => Promise.reject(fakeErrorResponse);
 
     // mock dispatch
     const dispatch = vi.fn();
 
-    // action
+    // Action
     await asyncPreloadProcess()(dispatch);
 
-    // assert
+    // Assert
     expect(dispatch).toHaveBeenCalledWith(setIsPreloadActionCreator(false));
   });
 });

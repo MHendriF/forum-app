@@ -18,19 +18,19 @@ import {
 
 describe('threadsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = threadDetailReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the thread detail when given by RECEIVE_THREAD_DETAIL action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = {
       type: ActionType.RECEIVE_THREAD_DETAIL,
@@ -39,21 +39,21 @@ describe('threadsReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = threadDetailReducer(initialState, action);
 
     expect(nextState).toEqual(action.payload.threadDetail);
   });
 
   it('should return the thread detail with the new detail when given UPVOTE_THREAD_DETAIL action', () => {
-    // arrange
+    // Arrange
     const initialState = fakeDetailThreadResponse;
     const action = {
       type: ActionType.UPVOTE_THREAD_DETAIL,
       payload: fakeUpVoteThreadResponse,
     };
 
-    // action
+    // Action
     const nextState = threadDetailReducer(initialState, action);
 
     expect(nextState).toEqual({
@@ -68,14 +68,14 @@ describe('threadsReducer function', () => {
   });
 
   it('should return the thread detail with the new detail when given DOWNVOTE_THREAD_DETAIL action', () => {
-    // arrange
+    // Arrange
     const initialState = fakeDetailThreadResponse;
     const action = {
       type: ActionType.DOWNVOTE_THREAD_DETAIL,
       payload: fakeDownVoteThreadResponse,
     };
 
-    // action
+    // Action
     const nextState = threadDetailReducer(initialState, action);
 
     expect(nextState).toEqual({

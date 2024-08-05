@@ -19,19 +19,19 @@ import {
 
 describe('threadsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = threadsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the threads when given by RECEIVE_THREADS action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = {
       type: 'RECEIVE_THREADS',
@@ -40,14 +40,14 @@ describe('threadsReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = threadsReducer(initialState, action);
 
     expect(nextState).toEqual(action.payload.threads);
   });
 
   it('should return the threads with the new thread when given by ADD_THREAD action', () => {
-    // arrange
+    // Arrange
     const initialState = [fakeThreadResponse];
 
     const action = {
@@ -57,15 +57,15 @@ describe('threadsReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = threadsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual([action.payload.threads, ...initialState]);
   });
 
   it('should return the threads with the new thread when given by UPVOTE_THREAD action', () => {
-    // arrange
+    // Arrange
     const initialState = [fakeThreadResponse];
 
     const action = {
@@ -73,10 +73,10 @@ describe('threadsReducer function', () => {
       payload: fakeUpVoteThreadResponse,
     };
 
-    // action
+    // Action
     const nextState = threadsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual([
       {
         ...initialState[0],
@@ -86,7 +86,7 @@ describe('threadsReducer function', () => {
   });
 
   it('should return the threads with the new thread when given by DOWNVOTE_THREAD action', () => {
-    // arrange
+    // Arrange
     const initialState = [fakeThreadResponse];
 
     const action = {
@@ -94,10 +94,10 @@ describe('threadsReducer function', () => {
       payload: fakeDownVoteThreadResponse,
     };
 
-    // action
+    // Action
     const nextState = threadsReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual([
       {
         ...initialState[0],

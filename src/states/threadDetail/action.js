@@ -53,8 +53,9 @@ function asyncReceiveThreadDetail(threadId) {
       dispatch(receiveThreadDetailActionCreator(threadDetail));
     } catch (error) {
       alert(error.message);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -73,8 +74,9 @@ function asyncUpVoteThreadDetail(threadId) {
       dispatch(
         upVoteThreadDetailActionCreator({ threadId, userId: authUser.id }),
       );
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -93,8 +95,9 @@ function asyncDownVoteThreadDetail(threadId) {
       dispatch(
         downVoteThreadDetailActionCreator({ threadId, userId: authUser.id }),
       );
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 

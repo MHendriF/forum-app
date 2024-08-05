@@ -11,19 +11,19 @@ import { fakeUserResponse } from '../../utils/fakeResponse';
 
 describe('usersReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = { type: 'UNKNOWN' };
 
-    // action
+    // Action
     const nextState = usersReducer(initialState, action);
 
-    // assert
+    // Assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the users when given by RECEIVE_USERS action', () => {
-    // arrange
+    // Arrange
     const initialState = [];
     const action = {
       type: 'RECEIVE_USERS',
@@ -32,7 +32,7 @@ describe('usersReducer function', () => {
       },
     };
 
-    // action
+    // Action
     const nextState = usersReducer(initialState, action);
 
     expect(nextState).toEqual(action.payload.users);

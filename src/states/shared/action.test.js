@@ -36,7 +36,7 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
   });
 
   it('should dispatch action correctly when data fetching success', async () => {
-    // arrange
+    // Arrange
     // stub implementation
     api.getAllUsers = () => Promise.resolve([fakeUserResponse]);
     api.getAllThreads = () => Promise.resolve([fakeThreadResponse]);
@@ -44,10 +44,10 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
     // mock dispatch
     const dispatch = vi.fn();
 
-    // action
+    // Action
     await asyncPopulateUsersAndThreads()(dispatch);
 
-    // assert
+    // Assert
     // dispatch is called with correct action
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(dispatch).toHaveBeenCalledWith(
@@ -60,7 +60,7 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
   });
 
   it('should dispatch action correctly when data fetching failed', async () => {
-    // arrange
+    // Arrange
     // stub implementation
     api.getAllUsers = () => Promise.reject(fakeErrorResponse);
     api.getAllThreads = () => Promise.reject(fakeErrorResponse);
@@ -73,10 +73,10 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
       window.alert = vi.fn();
     }
 
-    // action
+    // Action
     await asyncPopulateUsersAndThreads()(dispatch);
 
-    // assert
+    // Assert
     if (typeof window !== 'undefined') {
       expect(dispatch).toHaveBeenCalledWith(showLoading());
       expect(dispatch).toHaveBeenCalledWith(hideLoading());

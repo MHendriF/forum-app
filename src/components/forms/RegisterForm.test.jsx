@@ -38,38 +38,38 @@ describe('RegisterForm Component', () => {
   });
 
   it('should handle name typing correctly', async () => {
-    // arrange
+    // Arrange
     render(<RegisterForm onRegister={() => {}} />, { wrapper: MemoryRouter });
     const nameInput = await screen.getByLabelText('Name');
 
-    // action
+    // Action
     await userEvent.type(nameInput, 'John Doe');
 
-    // assert
+    // Assert
     expect(nameInput).toHaveValue('John Doe');
   });
 
   it('should handle email typing correctly', async () => {
-    // arrange
+    // Arrange
     render(<RegisterForm onRegister={() => {}} />, { wrapper: MemoryRouter });
     const emailInput = await screen.getByLabelText('Email');
 
-    // action
+    // Action
     await userEvent.type(emailInput, 'johndoe@mail.com');
 
-    // assert
+    // Assert
     expect(emailInput).toHaveValue('johndoe@mail.com');
   });
 
   it('should handle password typing correctly', async () => {
-    // arrange
+    // Arrange
     render(<RegisterForm onRegister={() => {}} />, { wrapper: MemoryRouter });
     const passwordInput = await screen.getByLabelText('Password');
 
-    // action
+    // Action
     await userEvent.type(passwordInput, '123456');
 
-    // assert
+    // Assert
     expect(passwordInput).toHaveValue('123456');
   });
 
@@ -86,7 +86,7 @@ describe('RegisterForm Component', () => {
       name: 'Register',
     });
 
-    // action
+    // Action
     await userEvent.type(nameInput, 'John Doe');
     await userEvent.type(emailInput, 'johndoe@mail.com');
     await userEvent.type(passwordInput, '123456');

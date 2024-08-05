@@ -56,8 +56,9 @@ function asyncAddThread({ title, body, category = 'all' }) {
       dispatch(receiveThreadsActionCreator(newThreads));
     } catch (error) {
       alert(error.message);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -72,8 +73,9 @@ function asyncUpVoteThread(threadId) {
     } catch (error) {
       alert(error.message);
       dispatch(upVoteThreadActionCreator({ threadId, userId: authUser.id }));
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -88,8 +90,9 @@ function asyncDownVoteThread(threadId) {
     } catch (error) {
       alert(error.message);
       dispatch(downVoteThreadActionCreator({ threadId, userId: authUser.id }));
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 

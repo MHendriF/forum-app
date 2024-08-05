@@ -24,8 +24,9 @@ function asyncReceiveLeaderboards() {
       if (typeof window !== 'undefined') {
         window.alert(error.message);
       }
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 

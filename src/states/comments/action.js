@@ -37,20 +37,21 @@ function downVoteCommentActionCreator({ commentId, userId }) {
   };
 }
 
-function asyncAddComment(content) {
+function asyncAddComment({ threadId, content }) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
     const { threadDetail } = getState();
 
     try {
-      const comment = await api.createComment(content);
+      const comment = await api.createComment({ threadId, content });
       dispatch(addCommentActionCreator(comment));
       const newThreadDetail = await api.getDetailThread(threadDetail.id);
       dispatch(receiveThreadDetailActionCreator(newThreadDetail));
     } catch (error) {
       alert(error.message);
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -67,8 +68,9 @@ function asyncUpVoteComment(commentId) {
     } catch (error) {
       alert(error.message);
       dispatch(upVoteCommentActionCreator({ commentId, userId: authUser.id }));
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
@@ -87,8 +89,9 @@ function asyncDownVoteComment(commentId) {
       dispatch(
         downVoteCommentActionCreator({ commentId, userId: authUser.id }),
       );
+    } finally {
+      dispatch(hideLoading());
     }
-    dispatch(hideLoading());
   };
 }
 
