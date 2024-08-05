@@ -12,31 +12,11 @@ import asyncPopulateUsersAndThreads from './action';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
 import api from '../../utils/api';
-
-const fakeThreadsResponse = [
-  {
-    id: 'thread-1',
-    title: 'Thread Pertama',
-    body: 'Ini adalah thread pertama',
-    category: 'general',
-    createdAt: '2022-09-22T10:06:55.588Z',
-    ownerId: 'users-1',
-    upVotesBy: [],
-    downVotesBy: [],
-    totalComments: 0,
-  },
-];
-
-const fakeUsersResponse = [
-  {
-    id: 'users-1',
-    name: 'John Doe',
-    email: 'john@example.com',
-    avatar: 'https://generated-image-url.jpg',
-  },
-];
-
-const fakeErrorResponse = new Error('Ups, something went wrong');
+import {
+  fakeErrorResponse,
+  fakeThreadResponse,
+  fakeUserResponse,
+} from '../../utils/fakeResponse';
 
 describe('asyncPopulateUsersAndThreads thunk', () => {
   beforeEach(() => {
@@ -58,8 +38,8 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
   it('should dispatch action correctly when data fetching success', async () => {
     // arrange
     // stub implementation
-    api.getAllUsers = () => Promise.resolve(fakeUsersResponse);
-    api.getAllThreads = () => Promise.resolve(fakeThreadsResponse);
+    api.getAllUsers = () => Promise.resolve([fakeUserResponse]);
+    api.getAllThreads = () => Promise.resolve([fakeThreadResponse]);
 
     // mock dispatch
     const dispatch = vi.fn();
@@ -71,10 +51,10 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
     // dispatch is called with correct action
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(dispatch).toHaveBeenCalledWith(
-      receiveThreadsActionCreator(fakeThreadsResponse),
+      receiveThreadsActionCreator([fakeThreadResponse]),
     );
     expect(dispatch).toHaveBeenCalledWith(
-      receiveUsersActionCreator(fakeUsersResponse),
+      receiveUsersActionCreator([fakeUserResponse]),
     );
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });

@@ -11,15 +11,10 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { setIsPreloadActionCreator, asyncPreloadProcess } from './action';
 import { setAuthUserActionCreator } from '../authUser/action';
-
-const fakeAuthUserResponse = {
-  id: 'users-1',
-  name: 'John Doe',
-  email: 'john@example.com',
-  avatar: 'https://generated-image-url.jpg',
-};
-
-const fakeErrorResponse = new Error('Ups, something went wrong');
+import {
+  fakeAuthUserResponse,
+  fakeErrorResponse,
+} from '../../utils/fakeResponse';
 
 describe('asyncPreloadProcess thunk', async () => {
   beforeEach(() => {

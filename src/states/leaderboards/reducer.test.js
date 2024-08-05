@@ -8,6 +8,7 @@
 import { describe, it, expect } from 'vitest';
 import leaderboardsReducer from './reducer';
 import { ActionType } from './action';
+import { fakeLeaderboardsResponse } from '../../utils/fakeResponse';
 
 describe('leaderboardsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
@@ -28,20 +29,7 @@ describe('leaderboardsReducer function', () => {
     const action = {
       type: ActionType.RECEIVE_LEADERBOARDS,
       payload: {
-        leaderboards: [
-          {
-            id: 'users-1',
-            name: 'John Doe',
-            email: 'john@example.com',
-            avatar: 'https://generated-image-url.jpg',
-          },
-          {
-            id: 'users-2',
-            name: 'Jane Doe',
-            email: 'jane@example.com',
-            avatar: 'https://generated-image-url.jpg',
-          },
-        ],
+        leaderboards: [fakeLeaderboardsResponse],
       },
     };
 

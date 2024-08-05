@@ -7,6 +7,7 @@
 
 import { describe, expect, it } from 'vitest';
 import usersReducer from './reducer';
+import { fakeUserResponse } from '../../utils/fakeResponse';
 
 describe('usersReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
@@ -27,20 +28,7 @@ describe('usersReducer function', () => {
     const action = {
       type: 'RECEIVE_USERS',
       payload: {
-        users: [
-          {
-            id: 'users-1',
-            name: 'John Doe',
-            email: 'john@example.com',
-            avatar: 'https://generated-image-url.jpg',
-          },
-          {
-            id: 'users-2',
-            name: 'Jane Doe',
-            email: 'jane@example.com',
-            avatar: 'https://generated-image-url.jpg',
-          },
-        ],
+        users: [fakeUserResponse],
       },
     };
 

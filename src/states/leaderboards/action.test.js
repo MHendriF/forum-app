@@ -13,29 +13,10 @@ import {
   receiveLeaderboardsActionCreator,
   asyncReceiveLeaderboards,
 } from './action';
-
-const fakeLeaderboardsResponse = [
-  {
-    user: {
-      id: 'users-1',
-      name: 'John Doe',
-      email: 'john@example.com',
-      avatar: 'https://generated-image-url.jpg',
-    },
-    score: 20,
-  },
-  {
-    user: {
-      id: 'users-2',
-      name: 'Jane Doe',
-      email: 'jane@example.com',
-      avatar: 'https://generated-image-url.jpg',
-    },
-    score: 25,
-  },
-];
-
-const fakeErrorResponse = new Error('Ups, something went wrong');
+import {
+  fakeErrorResponse,
+  fakeLeaderboardsResponse,
+} from '../../utils/fakeResponse';
 
 describe('asyncReceiveLeaderboards thunk', () => {
   beforeEach(() => {

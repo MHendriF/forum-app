@@ -9,6 +9,7 @@
 import { describe, expect, it } from 'vitest';
 import authUserReducer from './reducer';
 import { ActionType } from './action';
+import { fakeAuthUserResponse } from '../../utils/fakeResponse';
 
 describe('authUserReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
@@ -29,12 +30,7 @@ describe('authUserReducer function', () => {
     const action = {
       type: ActionType.SET_AUTH_USER,
       payload: {
-        authUser: {
-          id: 1,
-          name: 'User 1',
-          email: 'user1@mail.com',
-          avatar: 'https://www.gravatar.com/avatar/1',
-        },
+        authUser: fakeAuthUserResponse,
       },
     };
 
@@ -47,12 +43,7 @@ describe('authUserReducer function', () => {
 
   it('should return null when given by UNSET_AUTH_USER action', () => {
     // arrange
-    const initialState = {
-      id: 'users-1',
-      name: 'John Doe',
-      email: 'john@example.com',
-      avatar: 'https://generated-image-url.jpg',
-    };
+    const initialState = fakeAuthUserResponse;
     const action = { type: ActionType.UNSET_AUTH_USER };
 
     // action

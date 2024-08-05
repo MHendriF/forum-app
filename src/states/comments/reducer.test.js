@@ -11,6 +11,12 @@
 import { describe, it, expect } from 'vitest';
 import commentsReducer from './reducer';
 import { ActionType } from './action';
+import {
+  fakeAddCommentResponse,
+  fakeCommentResponse,
+  fakeDownVoteCommentResponse,
+  fakeUpVoteCommentResponse,
+} from '../../utils/fakeResponse';
 
 describe('commentsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
@@ -31,24 +37,7 @@ describe('commentsReducer function', () => {
     const action = {
       action: ActionType.RECEIVE_COMMENTS,
       payload: {
-        comments: [
-          {
-            id: 1,
-            content: 'Comment 1',
-            createdAt: '2022-09-01T00:00:00.000Z',
-            ownerId: 'users-1',
-            upVotesBy: [],
-            downVotesBy: [],
-          },
-          {
-            id: 2,
-            content: 'Comment 2',
-            createdAt: '2018-01-02T00:00:00.000Z',
-            ownerId: 'users-2',
-            upVotesBy: [],
-            downVotesBy: [],
-          },
-        ],
+        comments: [fakeCommentResponse],
       },
     };
 
@@ -60,35 +49,11 @@ describe('commentsReducer function', () => {
 
   it('should return the comments with the new comment when given by ADD_COMMENT action', () => {
     // arrange
-    const initialState = [
-      {
-        id: 1,
-        content: 'Comment 1',
-        createdAt: '2022-09-01T00:00:00.000Z',
-        ownerId: 'users-1',
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-      {
-        id: 2,
-        content: 'Comment 2',
-        createdAt: '2018-01-02T00:00:00.000Z',
-        ownerId: 'users-2',
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
+    const initialState = [fakeCommentResponse];
     const action = {
       type: ActionType.ADD_COMMENT,
       payload: {
-        comment: {
-          id: 3,
-          content: 'Comment 3',
-          createdAt: '2018-01-03T00:00:00.000Z',
-          ownerId: 'users-3',
-          upVotesBy: [],
-          downVotesBy: [],
-        },
+        comment: fakeAddCommentResponse,
       },
     };
 
@@ -101,22 +66,10 @@ describe('commentsReducer function', () => {
 
   it('should return the comments with the new comment when given by UPVOTE_COMMENT action', () => {
     // arrange
-    const initialState = [
-      {
-        id: 1,
-        content: 'Comment 1',
-        createdAt: '2022-09-01T00:00:00.000Z',
-        ownerId: 'users-1',
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
+    const initialState = [fakeCommentResponse];
     const action = {
       type: ActionType.UPVOTE_COMMENT,
-      payload: {
-        commentId: 1,
-        userId: 'users-1',
-      },
+      payload: fakeUpVoteCommentResponse,
     };
 
     // action
@@ -134,22 +87,10 @@ describe('commentsReducer function', () => {
 
   it('should return the comments with the new comment when given by DOWNVOTE_COMMENT action', () => {
     // arrange
-    const initialState = [
-      {
-        id: 1,
-        content: 'Comment 1',
-        createdAt: '2022-09-01T00:00:00.000Z',
-        ownerId: 'users-1',
-        upVotesBy: [],
-        downVotesBy: [],
-      },
-    ];
+    const initialState = [fakeCommentResponse];
     const action = {
       type: ActionType.DOWNVOTE_COMMENT,
-      payload: {
-        commentId: 1,
-        userId: 'users-1',
-      },
+      payload: fakeDownVoteCommentResponse,
     };
 
     // action

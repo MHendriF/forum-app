@@ -10,6 +10,11 @@
 import { describe, it, expect } from 'vitest';
 import threadDetailReducer from './reducer';
 import { ActionType } from './action';
+import {
+  fakeDetailThreadResponse,
+  fakeDownVoteThreadResponse,
+  fakeUpVoteThreadResponse,
+} from '../../utils/fakeResponse';
 
 describe('threadsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
@@ -30,34 +35,7 @@ describe('threadsReducer function', () => {
     const action = {
       type: ActionType.RECEIVE_THREAD_DETAIL,
       payload: {
-        detailThread: {
-          id: 'thread-1',
-          title: 'Thread Pertama',
-          body: 'Ini adalah thread pertama',
-          category: 'General',
-          createdAt: '2022-09-01T00:00:00.000Z',
-          owner: {
-            id: 'users-1',
-            name: 'John Doe',
-            avatar: 'https://generated-image-url.jpg',
-          },
-          upVotesBy: [],
-          downVotesBy: [],
-          comments: [
-            {
-              id: 'comment-1',
-              content: 'Ini adalah komentar pertama',
-              createdAt: '2022-09-01T00:00:00.000Z',
-              owner: {
-                id: 'users-1',
-                name: 'John Doe',
-                avatar: 'https://generated-image-url.jpg',
-              },
-              upVotesBy: [],
-              downVotesBy: [],
-            },
-          ],
-        },
+        detailThread: fakeDetailThreadResponse,
       },
     };
 
@@ -69,39 +47,10 @@ describe('threadsReducer function', () => {
 
   it('should return the thread detail with the new detail when given UPVOTE_THREAD_DETAIL action', () => {
     // arrange
-    const initialState = {
-      id: 'thread-1',
-      title: 'Thread Pertama',
-      body: 'Ini adalah thread pertama',
-      category: 'General',
-      createdAt: '2022-09-01T00:00:00.000Z',
-      owner: {
-        id: 'users-1',
-        name: 'John Doe',
-        avatar: 'https://generated-image-url.jpg',
-      },
-      upVotesBy: [],
-      downVotesBy: [],
-      comments: [
-        {
-          id: 'comment-1',
-          content: 'Ini adalah komentar pertama',
-          createdAt: '2022-09-01T00:00:00.000Z',
-          owner: {
-            id: 'users-1',
-            name: 'John Doe',
-            avatar: 'https://generated-image-url.jpg',
-          },
-          upVotesBy: [],
-          downVotesBy: [],
-        },
-      ],
-    };
+    const initialState = fakeDetailThreadResponse;
     const action = {
       type: ActionType.UPVOTE_THREAD_DETAIL,
-      payload: {
-        userId: 'users-2',
-      },
+      payload: fakeUpVoteThreadResponse,
     };
 
     // action
@@ -120,39 +69,10 @@ describe('threadsReducer function', () => {
 
   it('should return the thread detail with the new detail when given DOWNVOTE_THREAD_DETAIL action', () => {
     // arrange
-    const initialState = {
-      id: 'thread-1',
-      title: 'Thread Pertama',
-      body: 'Ini adalah thread pertama',
-      category: 'General',
-      createdAt: '2022-09-01T00:00:00.000Z',
-      owner: {
-        id: 'users-1',
-        name: 'John Doe',
-        avatar: 'https://generated-image-url.jpg',
-      },
-      upVotesBy: [],
-      downVotesBy: [],
-      comments: [
-        {
-          id: 'comment-1',
-          content: 'Ini adalah contoh comment',
-          createdAt: '2022-09-01T00:00:00.000Z',
-          owner: {
-            id: 'users-1',
-            name: 'John Doe',
-            avatar: 'https://generated-image-url.jpg',
-          },
-          upVotesBy: [],
-          downVotesBy: [],
-        },
-      ],
-    };
+    const initialState = fakeDetailThreadResponse;
     const action = {
       type: ActionType.DOWNVOTE_THREAD_DETAIL,
-      payload: {
-        userId: 'users-2',
-      },
+      payload: fakeDownVoteThreadResponse,
     };
 
     // action
