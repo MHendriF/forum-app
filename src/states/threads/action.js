@@ -1,11 +1,22 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
+const DOMAIN = {
+  NAME: 'thread',
+};
+
+const EVENT = {
+  ADD: 'add',
+  RECEIVE: 'receive',
+  UPVOTE: 'upvote',
+  DOWNVOTE: 'downvote',
+};
+
 const ActionType = {
-  ADD_THREAD: 'ADD_THREAD',
-  RECEIVE_THREADS: 'RECEIVE_THREADS',
-  UPVOTE_THREAD: 'UPVOTE_THREAD',
-  DOWNVOTE_THREAD: 'DOWNVOTE_THREAD',
+  ADD_THREAD: `${DOMAIN.NAME}/${EVENT.ADD}`,
+  RECEIVE_THREADS: `${DOMAIN.NAME}/${EVENT.RECEIVE}`,
+  UPVOTE_THREAD: `${DOMAIN.NAME}/${EVENT.UPVOTE}`,
+  DOWNVOTE_THREAD: `${DOMAIN.NAME}/${EVENT.DOWNVOTE}`,
 };
 
 function addThreadActionCreator(threads) {

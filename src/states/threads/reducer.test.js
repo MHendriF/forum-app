@@ -16,6 +16,7 @@ import {
   fakeThreadResponse,
   fakeUpVoteThreadResponse,
 } from '../../utils/fakeResponse';
+import { ActionType } from './action';
 
 describe('threadsReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
@@ -34,7 +35,7 @@ describe('threadsReducer function', () => {
     // Arrange
     const initialState = [];
     const action = {
-      type: 'RECEIVE_THREADS',
+      type: ActionType.RECEIVE_THREADS,
       payload: {
         threads: [fakeThreadResponse],
       },
@@ -51,7 +52,7 @@ describe('threadsReducer function', () => {
     const initialState = [fakeThreadResponse];
 
     const action = {
-      type: 'ADD_THREAD',
+      type: ActionType.ADD_THREAD,
       payload: {
         thread: fakeAddThreadResponse,
       },
@@ -69,7 +70,7 @@ describe('threadsReducer function', () => {
     const initialState = [fakeThreadResponse];
 
     const action = {
-      type: 'UPVOTE_THREAD',
+      type: ActionType.UPVOTE_THREAD,
       payload: fakeUpVoteThreadResponse,
     };
 
@@ -90,7 +91,7 @@ describe('threadsReducer function', () => {
     const initialState = [fakeThreadResponse];
 
     const action = {
-      type: 'DOWNVOTE_THREAD',
+      type: ActionType.DOWNVOTE_THREAD,
       payload: fakeDownVoteThreadResponse,
     };
 

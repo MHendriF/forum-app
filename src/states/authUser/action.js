@@ -1,9 +1,18 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
+const DOMAIN = {
+  NAME: 'auth',
+};
+
+const EVENT = {
+  SET_AUTH: 'setAuthUser',
+  UNSET_AUTH: 'unsetAuthUser',
+};
+
 const ActionType = {
-  SET_AUTH_USER: 'SET_AUTH_USER',
-  UNSET_AUTH_USER: 'UNSET_AUTH_USER',
+  SET_AUTH_USER: `${DOMAIN.NAME}/${EVENT.SET_AUTH}`,
+  UNSET_AUTH_USER: `${DOMAIN.NAME}/${EVENT.UNSET_AUTH}`,
 };
 
 function setAuthUserActionCreator(authUser) {

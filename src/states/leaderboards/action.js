@@ -1,8 +1,16 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
+const DOMAIN = {
+  NAME: 'leaderboard',
+};
+
+const EVENT = {
+  RECEIVE: 'receive',
+};
+
 const ActionType = {
-  RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARD',
+  RECEIVE_LEADERBOARDS: `${DOMAIN.NAME}/${EVENT.RECEIVE}`,
 };
 
 function receiveLeaderboardsActionCreator(leaderboards) {

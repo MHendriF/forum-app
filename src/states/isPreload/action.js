@@ -2,8 +2,16 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { setAuthUserActionCreator } from '../authUser/action';
 
+const DOMAIN = {
+  NAME: 'preload',
+};
+
+const EVENT = {
+  SET_IS_PRELOAD: 'setIsPreload',
+};
+
 const ActionType = {
-  SET_IS_PRELOAD: 'SET_IS_PRELOAD',
+  SET_IS_PRELOAD: `${DOMAIN.NAME}/${EVENT.SET_IS_PRELOAD}`,
 };
 
 function setIsPreloadActionCreator(isPreLoad) {

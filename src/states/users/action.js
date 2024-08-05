@@ -1,9 +1,18 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
+const DOMAIN = {
+  NAME: 'user',
+};
+
+const EVENT = {
+  RECEIVE: 'receive',
+  REGISTER: 'register',
+};
+
 const ActionType = {
-  RECEIVE_USERS: 'RECEIVE_USERS',
-  REGISTER_USER: 'REGISTER_USER',
+  RECEIVE_USERS: `${DOMAIN.NAME}/${EVENT.RECEIVE}`,
+  REGISTER_USER: `${DOMAIN.NAME}/${EVENT.REGISTER}`,
 };
 
 function receiveUsersActionCreator(users) {

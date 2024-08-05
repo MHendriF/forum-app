@@ -2,10 +2,20 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { receiveThreadDetailActionCreator } from '../threadDetail/action';
 
+const DOMAIN = {
+  NAME: 'comment',
+};
+
+const EVENT = {
+  ADD: 'add',
+  UPVOTE: 'upvote',
+  DOWNVOTE: 'downvote',
+};
+
 const ActionType = {
-  ADD_COMMENT: 'ADD_COMMENT',
-  UPVOTE_COMMENT: 'UPVOTE_COMMENT',
-  DOWNVOTE_COMMENT: 'DOWNVOTE_COMMENT',
+  ADD_COMMENT: `${DOMAIN.NAME}/${EVENT.ADD}`,
+  UPVOTE_COMMENT: `${DOMAIN.NAME}/${EVENT.UPVOTE}`,
+  DOWNVOTE_COMMENT: `${DOMAIN.NAME}/${EVENT.DOWNVOTE}`,
 };
 
 function addCommentActionCreator(comment) {

@@ -1,11 +1,22 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
+const DOMAIN = {
+  NAME: 'threadDetail',
+};
+
+const EVENT = {
+  RECEIVE: 'receive',
+  CLEAR: 'clear',
+  UPVOTE: 'upvote',
+  DOWNVOTE: 'downvote',
+};
+
 const ActionType = {
-  RECEIVE_THREAD_DETAIL: 'RECEIVE_THREAD_DETAIL',
-  CLEAR_THREAD_DETAIL: 'CLEAR_THREAD_DETAIL',
-  UPVOTE_THREAD_DETAIL: 'UPVOTE_THREAD_DETAIL',
-  DOWNVOTE_THREAD_DETAIL: 'DOWNVOTE_THREAD_DETAIL',
+  RECEIVE_THREAD_DETAIL: `${DOMAIN.NAME}/${EVENT.RECEIVE}`,
+  CLEAR_THREAD_DETAIL: `${DOMAIN.NAME}/${EVENT.CLEAR}`,
+  UPVOTE_THREAD_DETAIL: `${DOMAIN.NAME}/${EVENT.UPVOTE}`,
+  DOWNVOTE_THREAD_DETAIL: `${DOMAIN.NAME}/${EVENT.DOWNVOTE}`,
 };
 
 function receiveThreadDetailActionCreator(threadDetail) {
