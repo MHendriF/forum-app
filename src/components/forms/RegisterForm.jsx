@@ -49,7 +49,7 @@ export default function RegisterForm({ onRegister }) {
             register={register}
             errors={errors}
           />
-          <Button text="Register" type="submit" />
+          {/* <Button text="Register" type="submit" /> */}
         </form>
         <p className="text-center mt-4">
           Already have an account?
